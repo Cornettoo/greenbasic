@@ -1,0 +1,7 @@
+development:
+  password: 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
+  theme_id: "115642859686"
+  store: https://greenbasic-test.myshopify.com
+  directory: dist/
+  ignore_files:
+    - config/settings_data.json
