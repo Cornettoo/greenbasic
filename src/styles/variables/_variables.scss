@@ -1,0 +1,21 @@
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1190px
+);
+
+// Fonts
+$font-primary: 'Open Sans', sans-serif;
+
+// Colors
+$color-primary: blue;
+$color-secondary: #F49D37;
+$color-third: #EEEEFF;
+$color-light: #F4F4FB;
+
+// Transitions
+$transition-primary: .3s all ease-in-out;

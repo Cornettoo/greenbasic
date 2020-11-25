@@ -1,0 +1,12 @@
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+	margin: 0;
+	color: $color-primary;
+	padding-top: 12rem;
+	background-color: green;
+}
+
+.grecaptcha-badge { 
+	visibility: hidden; 
+}

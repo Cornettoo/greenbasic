@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{4:function(n,o,c){"use strict";function i(){console.log("navv")}c.r(o),c.d(o,"nav",(function(){return i}))}}]);

@@ -1,0 +1,19 @@
+@at-root {
+  @-ms-viewport { width: device-width; } // stylelint-disable-line at-rule-no-vendor-prefix
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import "./bootstrap/functions";
+@import "./bootstrap/variables";
+@import "./bootstrap/mixins";
+
+@import "./bootstrap/mixins/breakpoints";
+@import "./bootstrap/mixins/grid-framework";
+@import "./bootstrap/mixins/grid";
+
+@import "./bootstrap/grid";

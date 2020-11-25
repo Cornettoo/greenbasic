@@ -1,0 +1,36 @@
+form {
+
+	input,
+	textarea,
+	select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+
+	textarea {
+		height: 15rem;
+	}
+
+	select {
+		height: 100%;
+		cursor: pointer;
+	}
+}
+
+// Placeholders
+::-webkit-input-placeholder {
+	color: #FFFFFF;
+}
+
+::-moz-placeholder {
+	color: #FFFFFF;
+}
+
+:-ms-input-placeholder {
+	color: #FFFFFF;
+}
+
+:-moz-placeholder {
+	color: #FFFFFF;
+}

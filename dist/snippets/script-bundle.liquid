@@ -1,0 +1,8 @@
+{% capture layout_bundle_js %}index.js{% endcapture %}
+{{ layout_bundle_js | asset_url | script_tag }}
+
+{% comment %} 
+{% if template %}
+  {% capture script_bundle %}bundle.{{- template | remove: 'customers/' -}}.js{% endcapture %}
+  {{ script_bundle | asset_url | script_tag }}
+{% endif %} {% endcomment %}

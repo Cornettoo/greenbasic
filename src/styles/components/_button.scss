@@ -1,0 +1,27 @@
+.button {
+	border-radius: 3rem;
+	font-weight: 700;
+	padding: .9rem 3rem;
+	color: #FFFFFF;
+	display: inline-block;
+	border: none;
+	transition: $transition-primary;
+	cursor: pointer;
+
+	&:focus {
+		outline: 0;
+	}
+
+	&.button--primary {
+		background-color: $color-primary;
+
+		&:hover {
+			color: #FFFFFF;
+			background-color: lighten($color-primary, 5%);
+		}
+	}
+
+	&.button--secondary {
+		background-color: $color-secondary;
+	}
+}

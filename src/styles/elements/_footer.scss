@@ -1,0 +1,17 @@
+.footer {
+    padding: 10rem 0 0;
+    background-color: $color-light;
+    &__copyright {
+        margin-top: 8rem;
+        background-color: darken($color-light, 3%);
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            p {
+                font-size: 1.3rem;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
