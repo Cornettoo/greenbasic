@@ -1,0 +1,23 @@
+.flex {
+	display: flex;
+
+	&-w {
+		@extend .flex;
+		flex-flow: wrap;
+	}
+
+	&-b {
+		@extend .flex;
+		justify-content: space-between;
+	}
+
+	&-cb {
+		@extend .flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.center {
+	text-align: center;
+}

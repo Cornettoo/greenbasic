@@ -1,27 +1,32 @@
-.button {
-	border-radius: 3rem;
-	font-weight: 700;
-	padding: .9rem 3rem;
-	color: #FFFFFF;
-	display: inline-block;
-	border: none;
-	transition: $transition-primary;
+.button, button {
 	cursor: pointer;
+}
 
-	&:focus {
-		outline: 0;
-	}
+.button {
+	border-radius: map-get($general, 'border-radius');
+	font-weight: 600;
+	padding: .9rem 2rem;
+	color: white;
+	display: inline-block;
+	transition: map-get($transition, 'primary');
 
 	&.button--primary {
-		background-color: $color-primary;
+		background-color: map-get($colors, 'primary');
 
 		&:hover {
-			color: #FFFFFF;
-			background-color: lighten($color-primary, 5%);
+			color: white;
+			background-color: lighten(map-get($colors, 'primary'), 5%);
 		}
 	}
 
 	&.button--secondary {
-		background-color: $color-secondary;
+		background-color: map-get($colors, 'primary');
 	}
+}
+
+button {
+	outline: 0;
+	padding: 0;
+	border: none;
+	background: none;
 }

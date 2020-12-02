@@ -1,13 +1,12 @@
 const path = require('path');
 const isDevelopment = process.env.NODE_ENV === 'development';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const {
 	CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 var PACKAGE = require('./package.json');
-
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = build => {
 
@@ -77,7 +76,7 @@ module.exports = build => {
 			]
 		},
 		resolve: {
-			extensions: [".js", ".jsx", ".ts", ".tsx", '.scss']
+			extensions: [".js", ".jsx", ".ts", ".tsx", '.scss'],
 		},
 		plugins: [
 			new MiniCssExtractPlugin({
@@ -86,19 +85,13 @@ module.exports = build => {
 			}),
 			new CleanWebpackPlugin(),
 			new FriendlyErrorsWebpackPlugin(),
-			// new BrowserSyncPlugin({
-			//  reloadDelay: 750,
-			//  proxy: themeUrl,
-			//  host: 'localhost',
-			//  port: 300,
-			//  injectCss: true,
-			//  files: [
-			//     './../' + themefolderName + '/assets/styles/main.css',
-			//        // './../' + themefolderName + '/assets/scripts/script.js'
-			//  ],
-			// },{
-			//  reload: false,
-			// }),
+			new CopyPlugin({
+				patterns: [{
+					from: '../src/fonts/**/*',
+					to: path.resolve(__dirname, '../dist/assets/'),
+					flatten: true
+				}, ],
+			}),
 		]
 	};
 };

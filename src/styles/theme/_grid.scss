@@ -1,0 +1,106 @@
+.container {
+	@include media-breakpoint-up(xl) {
+		max-width: 1180px;
+	}
+}
+
+.p {
+	&-t {
+		&--none {
+			padding-top: 0;
+		}
+
+		&--xsmall {
+			@include sectionSpace(top, 2rem);
+		}
+
+		&--small {
+			@include sectionSpace(top, 3rem);
+		}
+
+		&--medium {
+			@include sectionSpace(top, 4rem);
+		}
+		
+		&--large {
+			@include sectionSpace(top, 5rem);
+		}
+	}
+	
+	&-b {
+		&--none {
+			padding-bottom: 0;
+		}
+
+		&--xsmall {
+			@include sectionSpace(bottom, 2rem);
+		}
+
+		&--small {
+			@include sectionSpace(bottom, 3rem);
+		}
+
+		&--medium {
+			@include sectionSpace(bottom, 4rem);
+		}
+		
+		&--large {
+			@include sectionSpace(bottom, 5rem);
+		}
+	}
+}
+
+.m {
+	&-t {
+		&--none {
+			margin-top: 0;
+		}
+
+		&--xxsmall {
+			@include sectionSpace(top, 1.8rem, margin);
+		}
+
+		&--xsmall {
+			@include sectionSpace(top, 3rem, margin);
+		}
+
+		&--small {
+			@include sectionSpace(top, 3.8rem, margin);
+
+			&--min {
+				@include sectionSpace(top, 3.2rem, margin, true);
+			}
+		}
+
+		&--medium {
+			@include sectionSpace(top, 4.8rem, margin);
+			
+		}
+		
+		&--large {
+			@include sectionSpace(top, 7rem, margin);
+		}
+	}
+	
+	&-b {
+		&--none {
+			margin-bottom: 0;
+		}
+
+		&--xsmall {
+			@include sectionSpace(bottom, 3rem, margin);
+		}
+
+		&--small {
+			@include sectionSpace(bottom, 3.8rem, margin);
+		}
+
+		&--medium {
+			@include sectionSpace(bottom, 4.8rem, margin);
+		}
+		
+		&--large {
+			@include sectionSpace(bottom, 7rem, margin);
+		}
+	}
+}

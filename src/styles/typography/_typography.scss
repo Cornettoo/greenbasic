@@ -5,12 +5,20 @@ html {
 }
 
 body {
-	line-height: 30px;
-	font-family: $font-primary;
-	font-size: 1.5rem;
-	letter-spacing: .3px;
+	color: map-get($colors, 'dark');
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+body,
+input,
+textarea,
+select,
+button,
+.button {
+	line-height: 1.6;
+	font-size: 1.5rem;
+	font-family: map-get($fonts, 'primary');
 }
 
 h1,
@@ -21,10 +29,75 @@ h6 {
 }
 
 a {
-	color: $color-primary;
-	transition: $transition-primary;
+	text-decoration: none;
+	color: map-get($colors, 'primary');
+	transition: map-get($transition, 'primary');
 
 	&:hover {
 		text-decoration: none;
+	}
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+	margin-top: 0;
+	line-height: 1.2;
+	margin-bottom: .6em;
+}
+
+h1 {
+	@include font-size(3.5rem);
+}
+
+h2 {
+	@include font-size(2.6rem);
+}
+
+h3 {
+	font-size: 2.2rem;
+}
+
+h4 {
+	font-size: 2rem;
+}
+
+h5,
+h6 {
+	font-size: 1.8rem;
+}
+
+
+.text {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		&:not(:first-child) {
+			margin-top: 1em;
+		}
+	}
+
+	*:last-child {
+		margin-bottom: 0;
+	}
+
+	p,
+	ul,
+	ol {
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+
+			@include media-breakpoint-up(md) {
+				margin-bottom: 1.5rem;
+			}
+		}
 	}
 }

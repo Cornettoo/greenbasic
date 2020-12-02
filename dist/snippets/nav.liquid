@@ -1,0 +1,81 @@
+<nav class="nav">
+	<div class="nav__top">
+		<div class="container flex-cb">
+			<ul class="list list--check list--check--small">
+				{% if settings.usp_1 != blank %}
+					<li>{{ settings.usp_1 }}</li>
+				{% endif %}
+				{% if settings.usp_2 != blank %}
+					<li>{{ settings.usp_2 }}</li>
+				{% endif %}
+				{% if settings.usp_3 != blank %}
+					<li>{{ settings.usp_3 }}</li>
+				{% endif %}
+				{% if settings.usp_4 != blank %}
+					<li>{{ settings.usp_4 }}</li>
+				{% endif %}
+			</ul>
+			<iframe src="https://dashboard.webwinkelkeur.nl/webshops/widget_html?id=1203104&layout=new_button-stars&theme=light&color=%23F5F5F5&show=yes&view=slider&amount=6&width=manual&width_amount=250px&height=45px&interval=5000&language=nld" scrolling="no" class="wwk-widget-iframe wwk-widget--new_button-stars wwk-widget--new_button-stars--light wwk-widget--has-tooltip--default" style="border: 0; height: 40px!important; width: 250px!important;transform: scale(0.85) translate3d(21px, 0, 0);"></iframe>
+		</div>
+	</div>
+	<div class="nav__center">
+		<div class="container flex-cb">
+			
+			<a href="/" aria-label="Navigeer naar de homepagina" class="nav__brand">
+				<img src="{{ settings.logo }}" alt="Logo">
+			</a>
+
+			<div class="nav__search">
+				<form class="form form--search" action="/search">
+					<input type="text" placeholder="Zoek naar een product" name="q" value="{{ search.terms | escape }}"/>
+					<button type="submit"><i class="icon-search"></i></button>
+				</form>
+			</div>
+
+			<div class="nav__links">
+				<ul class="list--disable flex-w center">
+					<li>
+						{% if shop.customer_accounts_enabled %}
+							{% if customer %}
+								<a href="{{ routes.account_url }}">
+									<i class="icon-user"></i>
+									Account
+								</a>
+							{% else %}
+								<a href="{{ routes.account_login_url }}">
+									<i class="icon-user"></i>
+									Inloggen
+								</a>
+							{% endif %}
+						{% endif %}
+					</li>
+					<li>
+						<a href="/cart" aria-label="Navigeer naar de winkelmandpagina">
+							<i class="icon-cart"></i>
+							€ 0.00
+						</a>
+					</li>
+					<li>
+						<a href="{{ settings.contact_link }}" aria-label="Navigeer naar de contactpagina">
+							<i class="icon-phone"></i>
+							Contact
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="nav__bottom">
+		<div class="container flex-b">
+			<button id="nav-button" class="button button--primary">
+				Assortiment
+				<i class="icon-select"></i>
+			</button>
+			<div class="nav__bottom__links">
+				{% for link in linklists.main-menu.links %}
+					<a href="{{ link.url }}">{{ link.title }}</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</nav>

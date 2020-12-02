@@ -9,13 +9,27 @@ $container-max-widths: (
 );
 
 // Fonts
-$font-primary: 'Open Sans', sans-serif;
+$fonts: (
+	primary: ('Open Sans', sans-serif),
+);
 
 // Colors
-$color-primary: blue;
-$color-secondary: #F49D37;
-$color-third: #EEEEFF;
-$color-light: #F4F4FB;
+$colors: (
+	primary: 	#90C72A,
+	secondary: 	#FF4947,
+	tertiary:	#6D93ED,
+	dark: 		#212121,
+	light: 		#F5F5F5,
+);
 
 // Transitions
-$transition-primary: .3s all ease-in-out;
+$transition: (
+	ease: ease-in-out,
+	timing: .3s,
+	primary: all .3s ease-in-out,
+);
+
+// General
+$general: (
+	border-radius: 4px,
+);

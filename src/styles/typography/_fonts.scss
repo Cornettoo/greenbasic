@@ -1,1 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+[class^="icon-"],
+[class*=" icon-"] {
+	font-family: 'icons' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+	content: "\e90c";
+}
+
+.icon-arrow:before {
+	content: "\e900";
+}
+
+.icon-phone:before {
+	content: "\e901";
+}
+
+.icon-cart:before {
+	content: "\e902";
+}
+
+.icon-search:before {
+	content: "\e903";
+}
+
+.icon-check:before {
+	content: "\e904";
+}
+
+.icon-select:before {
+	content: "\e905";
+}
+
+.icon-twitter:before {
+	content: "\e906";
+}
+
+.icon-facebook:before {
+	content: "\e907";
+}
+
+.icon-linkedin:before {
+	content: "\e908";
+}
+
+.icon-youtube:before {
+	content: "\e909";
+}
+
+.icon-instagram:before {
+	content: "\e90a";
+}
+
+.icon-whatsapp:before {
+	content: "\e90b";
+}

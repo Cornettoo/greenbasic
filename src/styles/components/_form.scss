@@ -3,6 +3,10 @@ form {
 	input,
 	textarea,
 	select {
+		outline: 0;
+		padding: 1rem 1.6rem;
+		border-radius: map-get($general, 'border-radius');
+		border: 1px solid map-get($colors, 'dark');
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
@@ -20,17 +24,37 @@ form {
 
 // Placeholders
 ::-webkit-input-placeholder {
-	color: #FFFFFF;
+	color: black;
 }
 
 ::-moz-placeholder {
-	color: #FFFFFF;
+	color: black;
 }
 
 :-ms-input-placeholder {
-	color: #FFFFFF;
+	color: black;
 }
 
 :-moz-placeholder {
-	color: #FFFFFF;
+	color: black;
+}
+
+.form {
+	&--search {
+		width: 37rem;
+		position: relative;
+
+		input {
+			padding-right: 4.5rem;
+			width: 100%;
+		}
+
+		button {
+			position: absolute;
+			right: 2rem;
+			top: 50%;
+			font-size: 1.5rem;
+			transform: translate3d(0, -40%, 0);
+		}
+	}
 }

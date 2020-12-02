@@ -3,28 +3,49 @@ ul {
 	margin: 0;
 
 	&.list--check {
-		padding: 0;
+		&--small {
+			li {
+				padding-left: 2rem;
+				font-size: 1.3rem;
+				font-weight: 600;
+				
+				&:before {
+					top: .2rem;
+					font-size: 1rem;
+				}
+			}
+		}
 
 		li {
-			position: relative;
-			list-style: none;
-			padding-left: 1.6rem;
-
 			&:before {
-				content: '';
-				position: absolute;
-				top: 50%;
-				left: .6rem;
-				transform: translate3d(-100%, -50%, 0);
-				width: .6rem;
-				height: .2rem;
-				border-radius: 1rem;
-				background-color: $color-primary;
+				content: "\e904";
+				font-family: 'icons';
+				font-size: 1.1rem;
+				color: map-get($colors, 'primary');
 			}
 		}
 	}
 
+	&.list--disable {
+		li {
+			padding-left: 0;
+			
+			&::before {
+				content: none;
+			}
+		}
+	}
+	
 	li {
+		position: relative;
 		list-style: none;
+		padding-left: 2.3rem;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: .4rem;
+			left: 0;
+		}
 	}
 }

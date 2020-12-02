@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'icons';
+	src: url('./icons.eot?u98zy');
+	src: url('./icons.eot?u98zy#iefix') format('embedded-opentype'),
+		url('./icons.ttf?u98zy') format('truetype'),
+		url('./icons.woff?u98zy') format('woff'),
+		url('./icons.svg?u98zy#icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
