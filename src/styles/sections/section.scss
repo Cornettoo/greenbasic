@@ -1,0 +1,17 @@
+.section {
+	&__heading {
+		margin-bottom: 2rem;
+
+		@include media-breakpoint-up(md) {
+			margin-bottom: 4rem;
+		}
+
+		&:not(.center) {
+			@include flex-cb;
+		}
+
+		h1, h2 {
+			margin-bottom: 0;
+		}
+	}
+}

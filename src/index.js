@@ -10,5 +10,13 @@ async function loadNav() {
 }
 loadNav();
 
+async function loadSlider() {
+	if (document.querySelector('.slider')) {
+		let slider = await import('./scripts/slider');
+		slider.slider();
+	}
+}
+loadSlider();
+
 
 import "./styles/bundle.scss";

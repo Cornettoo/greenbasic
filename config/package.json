@@ -1,11 +1,9 @@
 {
-  "name": "PlateStarterThema",
+  "name": "AcceptaStarterThema",
   "version": "1.0.0",
-  "folder": "Plate Starter Thema",
-  "url": "https://plate-starter-thema-preview.startwithplate.com/",
-  "description": "Starter theme for Plate websites",
+  "description": "Starter thema voor e-commerce",
   "main": "index.js",
-  "author": "Geert-Jan Evers | Plate Websites",
+  "author": "Corne Huisman",
   "license": "",
   "scripts": {
     "watch": "webpack --watch",

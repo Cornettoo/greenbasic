@@ -56,16 +56,8 @@
 			margin-top: 0;
 		}
 
-		&--xxsmall {
-			@include sectionSpace(top, 1.8rem, margin);
-		}
-
-		&--xsmall {
-			@include sectionSpace(top, 3rem, margin);
-		}
-
 		&--small {
-			@include sectionSpace(top, 3.8rem, margin);
+			@include sectionSpace(top, 2rem, margin);
 
 			&--min {
 				@include sectionSpace(top, 3.2rem, margin, true);
@@ -73,12 +65,12 @@
 		}
 
 		&--medium {
-			@include sectionSpace(top, 4.8rem, margin);
+			@include sectionSpace(top, 4rem, margin);
 			
 		}
 		
 		&--large {
-			@include sectionSpace(top, 7rem, margin);
+			@include sectionSpace(top, 5rem, margin);
 		}
 	}
 	
@@ -88,19 +80,19 @@
 		}
 
 		&--xsmall {
-			@include sectionSpace(bottom, 3rem, margin);
+			@include sectionSpace(bottom, 2rem, margin);
 		}
 
 		&--small {
-			@include sectionSpace(bottom, 3.8rem, margin);
+			@include sectionSpace(bottom, 3rem, margin);
 		}
 
 		&--medium {
-			@include sectionSpace(bottom, 4.8rem, margin);
+			@include sectionSpace(bottom, 4rem, margin);
 		}
 		
 		&--large {
-			@include sectionSpace(bottom, 7rem, margin);
+			@include sectionSpace(bottom, 5rem, margin);
 		}
 	}
 }

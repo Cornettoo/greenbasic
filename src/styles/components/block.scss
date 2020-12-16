@@ -1,0 +1,96 @@
+.block {
+	display: flex;
+	flex-flow: column;
+	text-align: center;
+	min-height: 100%;
+	color: black;
+	border-radius: .4rem;
+
+	&--white {
+		background-color: white;
+	}
+
+	&--button {
+		background-color: map-get($colors, 'light');
+
+		&__inner {
+			padding: 3rem;
+		}
+
+		.button {
+			width: 100%;
+			border-radius: 0;
+			font-size: 1.6rem;
+			padding: 1rem 2rem;
+		}
+
+		img {
+			width: 57%;
+			max-height: 11rem;
+			margin-top: 2rem;
+		}
+	}
+
+	&--product {
+		padding: 1.5rem;
+
+		@include media-breakpoint-up(lg) {
+			padding: 2.7rem;
+		}
+
+		&:not(.block--white) {
+			border: 1px solid map-get($colors, 'tertiary');
+		}
+
+		picture {
+			@include flex-cc;
+			height: 15.5rem;
+			width: 100%;
+			margin-bottom: 1.6rem;
+			
+			img {
+				max-height: 100%;
+				max-width: 100%;
+			}
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			margin: 0 0 .7rem;
+			font-weight: 700;
+		}
+
+		span {
+			line-height: 1;
+			font-weight: 600;
+			color: map-get($colors, 'secondary');
+		}
+	}
+
+	.price {
+		@include flex-cc;
+
+		&--old {
+			color: map-get($colors, 'dark-grey');
+			font-size: 1.2rem;
+			text-decoration: line-through;
+			margin-right: .5rem;
+		}
+	}
+
+	.button {
+		margin-top: auto;
+	}
+
+	img {
+		object-fit: contain;
+	}
+}
+
+.blocks {
+	margin-bottom: -3rem;
+
+	div[class^='col'] {
+		margin-bottom: 3rem;
+	}
+}

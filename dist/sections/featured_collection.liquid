@@ -1,0 +1,119 @@
+{% schema %}
+	{
+		"name": "Uitgelichte categorie",
+		"settings": [
+			{
+				"type": "radio",
+				"id": "space_top",
+				"label": "Ruimte boven",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "radio",
+				"id": "space_bottom",
+				"label": "Ruimte onder",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "text",
+				"label": "Tekst"
+			},
+			{
+				"type": "text",
+				"id": "button_text",
+				"label": "Button tekst"
+			},
+			{
+				"type": "text",
+				"id": "button_description",
+				"label": "Button beschrijving"
+			},
+			{
+				"id": "button_url",
+				"type": "url",
+				"label": "Button"
+			}
+		],
+		"blocks": [
+			{
+				"type": "list",
+				"name": "Opsomming",
+				"settings": [
+					{
+						"type": "text",
+						"id": "list",
+						"label": "Tekst"
+					}
+				]
+			},
+			{
+				"type": "products",
+				"name": "Uitgelichte producten",
+				"settings": [
+					{
+						"type": "product",
+						"id": "feature_product",
+						"label": "Product"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"category": "Secties",
+				"name": "Uitgelichte categorie"
+			}
+		]
+	}
+{% endschema %}
+{%- assign listItems = section.blocks | where: 'type', 'list' -%}
+{%- assign products = section.blocks | where: 'type', 'products' -%}
+<section class="section featured-cat m-t--{{ section.settings.space_top }} m-b--{{ section.settings.space_top }}">
+	<div class="container">
+		<div class="row">
+			<div class="col col-md-6 col-lg-5 featured-cat__text text">
+				<h2>{{ section.settings.title }}</h2>
+				{{ section.settings.text }}
+				<ul class="list--check">
+					{% for block in listItems %}
+						<li>{{ block.settings.list }}</li>
+					{% endfor %}
+				</ul>
+				{% include 'button', 
+					text: section.settings.button_text,
+					description: section.settings.button_description,
+					url: section.settings.button_url
+				%}
+			</div>
+			<div class="col col-md-6 col-lg-6 offset-lg-1 featured-cat__blocks">
+				<div class="row blocks">
+					{% for block in products %}
+						<div class="col-md-6">
+							{% include 'block', product: all_products[block.settings.feature_product],
+								class: 'block--product block--white' 
+							%}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

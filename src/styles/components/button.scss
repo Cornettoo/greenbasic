@@ -5,17 +5,32 @@
 .button {
 	border-radius: map-get($general, 'border-radius');
 	font-weight: 600;
-	padding: .9rem 2rem;
+	padding: 1rem 2rem;
 	color: white;
 	display: inline-block;
 	transition: map-get($transition, 'primary');
 
+	&.button--primary,
+	&.button--dark {
+		i {
+			font-size: 1.1rem;
+			margin-left: 0.4rem;
+		}
+	}
+	
 	&.button--primary {
 		background-color: map-get($colors, 'primary');
 
 		&:hover {
-			color: white;
 			background-color: lighten(map-get($colors, 'primary'), 5%);
+		}
+	}
+	
+	&.button--dark {
+		background-color: map-get($colors, 'dark');
+
+		&:hover {
+			background-color: lighten(map-get($colors, 'dark'), 5%);
 		}
 	}
 

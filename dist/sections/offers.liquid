@@ -1,0 +1,93 @@
+{% schema %}
+	{
+		"name": "Aanbiedingen",
+		"settings": [
+			{
+				"type": "radio",
+				"id": "space_top",
+				"label": "Ruimte boven",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "radio",
+				"id": "space_bottom",
+				"label": "Ruimte onder",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "button_text",
+				"label": "Button tekst"
+			},
+			{
+				"type": "text",
+				"id": "button_description",
+				"label": "Button beschrijving"
+			},
+			{
+				"type": "url",
+				"id": "button_url",
+				"label": "Button url"
+			},
+			{
+				"type": "collection",
+				"id": "collection",
+				"label": "Categorie"
+			}
+		],
+		"presets": [
+			{
+				"category": "Secties",
+				"name": "Aanbiedingen"
+			}
+		]
+	}
+{% endschema %}
+
+<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_top }}">
+	<div class="container">
+		<div class="section__heading">
+			<h2>{{ section.settings.title }}</h2>
+			{% include 'button', 
+				text: section.settings.button_text,
+				description: section.settings.button_description,
+				url: section.settings.button_url,
+				style: 'dark'
+			%}
+		</div>
+		<div class="row blocks slider slider--blocks">
+			{%- assign products = collections[section.settings.collection].products | limit: 10 -%}
+
+			<div class="swiper-wrapper">
+				{% for product in products %}
+					<div class="col-md-4 col-lg-3">
+						{% include 'block', product: product,
+							class: 'block--product' 
+						%}
+					</div>
+				{% endfor %}
+			</div>
+			<div class="slider__buttons">
+				<div class="slider__buttons-prev"></div>
+				<div class="slider__buttons-next"></div>
+			</div>
+		</div>
+	</div>
+</section>

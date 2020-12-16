@@ -1,6 +1,7 @@
 {% schema %}
 	{
 		"name": "Categorieën",
+		"max_blocks": 3,
 		"settings": [
 			{
 				"type": "radio",
@@ -27,9 +28,28 @@
 				"default": "none"
 			},
 			{
-				"id": "title",
 				"type": "text",
+				"id": "title",
 				"label": "Titel"
+			}
+		],
+		"blocks": [
+			{
+				"type": "collection",
+				"name": "collection block",
+				"settings": [
+					{
+						"type": "collection",
+						"id": "collection",
+						"label": "Categorie"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"category": "Secties",
+				"name": "Categorieën"
 			}
 		]
 	}
@@ -40,16 +60,27 @@
 		<div class="section__heading center">
 			<h1>{{ section.settings.title }}</h1>
 		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<h3>Knutselmateriaal op maat</h3>
-			</div>
-			<div class="col-md-4">
-				<h3>Knutselmateriaal op maat</h3>
-			</div>
-			<div class="col-md-4">
-				<h3>Knutselmateriaal op maat</h3>
-			</div>
+		<div class="row blocks">
+			{%- assign size = section.blocks | size -%}
+			{% case size %}
+				{% when 1 %}
+					{%- assign blockClass = 'col-md-12' -%}
+				{% when 2 %}
+					{%- assign blockClass = 'col-md-6' -%}
+				{% else %}
+					{%- assign blockClass = 'col-md-4' -%}
+			{% endcase %}
+			{% for block in section.blocks %}
+				<div class="{{ blockClass }}" {{ block.shopify_attributes }}>
+					<a href="{{ collections[block.settings.collection].url }}" aria-label="Navigeer naar {{ collections[block.settings.collection].title | downcase }}" class="block block--button">
+						<div class="block--button__inner">
+							<h3>{{ collections[block.settings.collection].title }}</h3>
+							<img src="{{ collections[block.settings.collection].image | img_url: 'medium' }}" alt="{{ collections[block.settings.collection].image.alt }}">
+						</div>
+						<div class="button button--primary">Bekijk categorie <i class="icon icon-arrow"></i></div>
+					</a>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 </section>
