@@ -27,6 +27,23 @@
 				"default": "none"
 			},
 			{
+				"type": "checkbox",
+				"id": "center",
+				"label": "Tekst centreren"
+			},
+			{
+				"type": "radio",
+				"id": "title_tag",
+				"label": "Titel tag",
+				"options": [
+					{ "value": "h2", "label": "H2" },
+					{ "value": "h3", "label": "H3" },
+					{ "value": "h4", "label": "H4" },
+					{ "value": "h5", "label": "H5" }
+				],
+				"default": "h2"
+			},
+			{
 				"type": "text",
 				"id": "title",
 				"label": "Titel"
@@ -34,7 +51,7 @@
 			{
 				"type": "richtext",
 				"id": "text",
-				"label": "text"
+				"label": "Tekst"
 			}
 		],
 		"presets": [
@@ -46,9 +63,11 @@
 	}
 {% endschema %}
 
-<section class="section text text--mw p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_top }}">
-	<div class="container center">
-		<h2>{{ section.settings.title }}</h2>
-		<p>{{ section.settings.text }}</p>
+<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
+	<div class="container">
+		<div class="text text--mw {% if section.settings.center %}center{% endif %}">
+			<{{ section.settings.title_tag }}>{{ section.settings.title }}</{{ section.settings.title_tag }}>
+			<p>{{ section.settings.text }}</p>
+		</div>
 	</div>
 </section>

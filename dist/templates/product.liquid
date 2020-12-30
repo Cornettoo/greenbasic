@@ -1,29 +1,82 @@
-{% assign current_variant = product.selected_or_first_available_variant %}
-{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-<img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
-{% for image in product.images %}
-  <a href="{{ image.src | img_url: 'large' }}">
-    <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-  </a>
-{% endfor %}
-<h1>{{ product.title }}</h1>
-<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-  <select name="id" id="productSelect">
-    {% for variant in product.variants %}
-      {% if variant.available %}
-        <option value="{{ variant.id }}">
-          {{ variant.title }} - {{ variant.price | money_with_currency }}
-        </option>
-      {% else %}
-        <option disabled="disabled">
-          {{ variant.title }} - sold out
-        </option>
-      {% endif %}
-    {% endfor %}
-  </select>
-  {{ current_variant.price | money }}
-  <label for="Quantity">quantity</label>
-  <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  <button type="submit" name="add" id="AddToCart">Add to cart</button>
-</form>
-<div>{{ product.description }}</div>
+{%- assign content = product.description | split: '-split-' -%}
+
+<section class="section text p-t--small p-b--small">
+   <div class="container">
+      <h1 class="h2">{{ product.title }}</h1>
+      <label for=""></label>
+   </div>
+</section>
+
+<section class="product">
+   <div class="container">
+      <div class="row">
+         <div class="col col-md-6 product__slider">
+				<div class="swiper-container slider-top">
+					<div class="swiper-wrapper">
+						{% for image in product.images %}
+							{%- assign imageAlt = image.alt | split: '|' -%}
+							{%- assign imageAltTextLast = imageAlt[1] | downcase | remove: ' ' -%}
+							<div class="swiper-slide {{ imageAltTextLast }}">
+								<img src="{{ image.src | img_url: '600x600', scale: 2 }}" alt="{{ imageAlt[0] | escape }}"  {% if imageAltTextLast == 'fullscreen' %}class="fullscreen"{% endif %}>
+							</div>
+						{% endfor %}	
+					</div>
+				</div>
+				
+            <div class="swiper-container slider-thumbs">
+               <div class="swiper-wrapper">
+						{% for image in product.images %}
+							<div class="swiper-slide">
+								<img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+							</div>
+						{% endfor %}
+               </div>
+            </div>
+         </div>
+
+         <div class="col col-md-6">
+				{{ product.metafields.global.shipping }}
+            <!-- <form action="/cart/add" enctype="multipart/form-data" id="AddToCartForm" method="post">
+					<select id="productSelect" name="id">
+						{% for variant in product.variants %}
+							{% if variant.available %}
+								<option value="{{ variant.id }}">
+									{{ variant.title }}
+									-
+									{{ variant.price | money_with_currency }}
+								</option>
+							{% else %}
+								<option disabled="disabled">
+									{{ variant.title }}
+									- sold out
+								</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					{{ current_variant.price | money }}
+					<label for="Quantity">quantity</label>
+					<input id="Quantity" min="1" name="quantity" type="number" value="1">
+					<button id="AddToCart" name="add" type="submit">Add to cart</button>
+				</form> -->
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="section text list--product">
+	<div class="container">
+		{{ content[1] }}
+	</div>
+</section>
+
+{% section "related" %}
+
+<section class="section text p-t--large">
+   <div class="container">
+		{{ content[0] }}
+		<br/>
+		{{ content[2] }}
+   </div>
+</section>
+
+{% section "ordering_process" %}

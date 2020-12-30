@@ -55,12 +55,12 @@ h1 {
 	@include font-size(3.5rem);
 }
 
-h2 {
+h2, .h2 {
 	@include font-size(2.6rem);
 }
 
 h3 {
-	font-size: 2.2rem;
+	font-size: 2.5rem;
 }
 
 h4 {
@@ -69,9 +69,12 @@ h4 {
 
 h5,
 h6 {
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 }
 
+p {
+	margin-top: 0;
+}
 
 .text {
 	h1,

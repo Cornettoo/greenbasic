@@ -149,3 +149,21 @@
 	@include flex-c;
 	justify-content: space-around;
 }
+
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+
+	&::-moz-placeholder {
+		@content;
+	}
+
+	&:-ms-input-placeholder {
+		@content;
+	}
+
+	&:-moz-placeholder {
+		@content;
+	}
+}

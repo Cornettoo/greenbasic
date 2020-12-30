@@ -1,0 +1,99 @@
+{% schema %}
+
+{
+   "name": "3 Blokken",
+   "settings": [
+      {
+         "type": "radio",
+         "id": "space_top",
+         "label": "Ruimte boven",
+         "options": [
+            {
+               "value": "large",
+               "label": "Groot"
+            }, {
+               "value": "medium",
+               "label": "Medium"
+            }, {
+               "value": "small",
+               "label": "Klein"
+            }, {
+               "value": "none",
+               "label": "Geen"
+            }
+         ],
+         "default": "none"
+      }, {
+         "type": "radio",
+         "id": "space_bottom",
+         "label": "Ruimte onder",
+         "options": [
+            {
+               "value": "large",
+               "label": "Groot"
+            }, {
+               "value": "medium",
+               "label": "Medium"
+            }, {
+               "value": "small",
+               "label": "Klein"
+            }, {
+               "value": "none",
+               "label": "Geen"
+            }
+         ],
+         "default": "none"
+      }
+   ],
+   "presets": [
+      {
+         "category": "Secties",
+         "name": "3 Blokken"
+      }
+   ]
+}
+
+{% endschema %}
+
+<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
+   <div class="container">
+      <div class="row blocks">
+         <div class="col col-md-4">
+            <div class="block block--featured block--light">
+               <img src="{{ settings.block_1_image | img_url: 'medium' }}" alt="{{ settings.block_1_image.alt }}">
+               <h3>{{ settings.block_1_title }}</h3>
+               <p>{{ settings.block_1_text }}</p>
+               {% include 'button', 
+						text: settings.block_1_button_text,
+						description: settings.block_1_button_description,
+						url: settings.block_1_button,
+						style: 'dark'
+					%}
+            </div>
+         </div>
+         <div class="col col-md-4">
+            <div class="block block--featured block--primary">
+               <img src="{{ settings.block_2_image | img_url: 'medium' }}" alt="{{ settings.block_2_image.alt }}">
+               <h3>{{ settings.block_2_title }}</h3>
+               <div class="block__html">
+                  {{ settings.block_2_html }}
+               </div>
+            </div>
+         </div>
+         <div class="col col-md-4">
+            <div class="block block--featured block--dark">
+               <img src="{{ settings.block_3_image | img_url: 'medium' }}" alt="{{ settings.block_3_image.alt }}">
+               <h3>{{ settings.block_3_title }}</h3>
+               <p>{{ settings.block_3_text }}</p>
+               <form class="form form--newsletter">
+                  <input placeholder="Type hier uw e-mail" type="email">
+                  <button type="submit">
+                     <i class="icon-arrow"></i>
+                  </button>
+               </form>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>

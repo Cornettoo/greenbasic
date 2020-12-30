@@ -1,0 +1,68 @@
+{% schema %}
+	{
+		"name": "Bestelproces",
+		"settings": [
+			{
+				"type": "radio",
+				"id": "space_top",
+				"label": "Ruimte boven",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "radio",
+				"id": "space_bottom",
+				"label": "Ruimte onder",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			}
+		],
+		"presets": [
+			{
+				"category": "Secties",
+				"name": "Bestelproces"
+			}
+		]
+	}
+{% endschema %}
+
+<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
+	<div class="container">
+		<div class="steps">
+			<h2>{{ settings.steps_title }}</h2>
+
+			<div class="steps__wrapper">
+				<div class="steps__wrapper__item">
+					<h5>{{ settings.step_1_title }}</h5>
+					<p>{{ settings.step_1_text }}</p>
+					<img src="{{ settings.step_1_image | img_url: 'large' }}" alt="{{ settings.step_1_image.alt }}">
+				</div>
+				<div class="steps__wrapper__item">
+					<h5>{{ settings.step_2_title }}</h5>
+					<p>{{ settings.step_2_text }}</p>
+					<img src="{{ settings.step_2_image | img_url: 'large' }}" alt="{{ settings.step_2_image.alt }}">
+				</div>
+				<div class="steps__wrapper__item">
+					<h5>{{ settings.step_3_title }}</h5>
+					<p>{{ settings.step_3_text }}</p>
+					<img src="{{ settings.step_3_image | img_url: 'large' }}" alt="{{ settings.step_3_image.alt }}">
+				</div>
+				<div class="steps__wrapper__item">
+					<h5>{{ settings.step_4_title }}</h5>
+					<p>{{ settings.step_4_text }}</p>
+					<img src="{{ settings.step_4_image | img_url: 'large' }}" alt="{{ settings.step_4_image.alt }}">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

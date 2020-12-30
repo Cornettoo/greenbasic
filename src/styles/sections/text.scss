@@ -1,13 +1,9 @@
 .text {
 	&--mw {
-		.container {
-			@include media-breakpoint-up(md) {
-				padding: 0 15rem;
-			}
+		max-width: 65rem;
 
-			@include media-breakpoint-up(xl) {
-				padding: 0 28rem;
-			}
+		&.center {
+			margin: 0 auto;
 		}
 	}
 }

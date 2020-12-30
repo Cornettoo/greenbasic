@@ -1,0 +1,112 @@
+{% schema %}
+	{
+		"name": "Footer",
+		"class": "footer",
+		"tag": "footer",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "list",
+				"name": "USP",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Titel"
+					},
+					{
+						"type": "richtext",
+						"id": "text",
+						"label": "Tekst"
+					},
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Afbeelding"
+					}
+				]
+			},
+			{
+				"type": "menu",
+				"name": "Menu",
+				"settings": [
+					{
+						"type": "checkbox",
+						"id": "social",
+						"label": "Social menu",
+						"info": "Geef hier aan of het om het social media menu gaat."
+					},
+					{
+						"type": "link_list",
+						"id": "menu",
+						"label": "Menu"
+					}
+				]
+			},
+			{
+				"type": "images",
+				"name": "Afbeelding",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Afbeelding"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}
+
+{%- assign uspItems = section.blocks | where: 'type', 'list' -%}
+{%- assign menuItems = section.blocks | where: 'type', 'menu' -%}
+{%- assign imageItems = section.blocks | where: 'type', 'images' -%}
+
+<div class="container">
+	<div class="row footer__usp">
+		{% for item in uspItems %}
+			<div class="footer__usp__item">
+				<img src="{{ item.settings.image | img_url: 'medium' }}" alt="{{ item.settings.image.alt }}">
+				<div>
+					<h5>{{ item.settings.title }}</h5>
+					{{ item.settings.text }}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="row footer__menus">
+		<hr class="top">
+		{% for item in menuItems %}
+			{%- assign menuItem = linklists[item.settings.menu] -%}
+			<div class="col">
+				<h5>{{ menuItem.title }}</h5>
+				<ul>
+					{% for link in menuItem.links %}
+						<li>
+							{% if item.settings.social %}
+								<a href="{{ link.url }}" target="_blank" rel="noopener" aria-label="Navigeer naar {{ link.title }}">
+									<i class="icon-{{ link.title | downcase }}"></i>
+								</a>
+								{% else %}
+								<a href="{{ link.url }}" aria-label="Navigeer naar {{ link.title }}">
+									{{ link.title }}
+								</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endfor %}
+		<hr class="bottom">
+	</div>
+
+	<div class="row footer__images">
+		<div class="col">
+			{% for item in imageItems %}
+				<img src="{{ item.settings.image | img_url: "medium" }}" alt="{{ item.settings.image.alt }}">
+			{% endfor %}
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,108 @@
+.footer {
+	padding: 5rem 0;
+	background-color: map-get($colors, 'light');
+
+	&__usp {
+		justify-content: space-between;
+		padding-bottom: 4.5rem;
+
+		&__item {
+			display: flex;
+			align-items: flex-start;
+			width: 27%;
+
+			img {
+				width: 4.5rem;
+				max-height: 10.5rem;
+				object-fit: contain;
+			}
+
+			div {
+				position: relative;
+				margin-left: 2rem;
+				padding-left: 2rem;
+				font-size: 1.3rem;
+
+				&::before {
+					@include pseudo-absolute(0, auto, auto, 0);
+					height: 6rem;
+					width: 1px;
+					background-color: darken(map-get($colors, 'light'), 7%);
+				}
+
+				p {
+					margin-bottom: .8rem;
+				}
+			}
+		}
+	}
+
+	&__menus {
+		position: relative;
+		padding: 4.5rem 0;
+
+		hr {
+			position: absolute;
+			right: 15px;
+			left: 15px;
+			margin: 0;
+			border: none;
+			height: 1px;
+			background-color: darken(map-get($colors, 'light'), 7%);
+			
+			&.top {
+				top: 0;
+			}
+
+			&.bottom {
+				bottom: 0;
+			}
+		}
+
+		h5 {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__images {
+		padding-top: 2.5rem;
+
+		.col {
+			display: flex;
+			align-items: center;
+		}
+
+		img {
+			max-width: 7.4rem;
+			max-height: 3rem;
+			object-fit: contain;
+
+			&:not(:last-child) {
+				margin-right: 2rem;
+			}
+		}
+	}
+
+	ul {
+		li {
+			padding-left: 0 !important;
+
+			&:not(:last-child) {
+				margin-bottom: .5rem;
+			}
+			
+			&::before {
+				content: none;
+			}
+
+			a {
+				font-size: 1.4rem;
+				color: black;
+
+				i {
+					font-size: 2.4rem;
+				}
+			}
+		}
+	}
+}

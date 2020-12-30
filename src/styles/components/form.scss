@@ -22,24 +22,53 @@ form {
 	}
 }
 
-// Placeholders
-::-webkit-input-placeholder {
-	color: black;
+input[type="checkbox"] {
+	margin: 0;
+	position: absolute;
+	opacity: 0;
+
+	&:checked + label::before {
+		background-color: map-get($colors, 'dark');
+	}
+
+	& + label {
+		position: relative;
+		padding-left: 2rem;
+		cursor: pointer;
+
+		&::before {
+			@include pseudo-absolute(.4rem, auto, auto, 0);
+			width: 1.3rem;
+			height: 1.3rem;
+			border-radius: 1px;
+			border: 1px solid map-get($colors, 'dark');
+		}
+	}
 }
 
-::-moz-placeholder {
-	color: black;
-}
-
-:-ms-input-placeholder {
-	color: black;
-}
-
-:-moz-placeholder {
-	color: black;
+@include placeholder {
+	color: map-get($colors, 'dark');
 }
 
 .form {
+	&--newsletter {
+		width: 100%;
+		position: relative;
+
+		input {
+			width: 100%;
+			border: 1px solid white;
+			background-color: transparent;
+		}
+
+		button {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translate3d(-2rem, -50%, 0);
+			font-size: 1.2rem;
+		}
+	}
 	&--search {
 		width: 37rem;
 		position: relative;

@@ -1,7 +1,7 @@
 [{
 		"name": "theme_info",
 		"theme_name": "Greenbasic",
-		"theme_version": "0.0.1",
+		"theme_version": "1.0",
 		"theme_author": "Accepta",
 		"theme_documentation_url": "https://accepta.eu",
 		"theme_support_url": "https://accepta.eu"
@@ -46,6 +46,169 @@
 				"id": "contact_link",
 				"label": "Contact",
 				"info": "Plaats hier een link naar de contactpagina"
+			}
+		]
+	},
+	{
+		"name": "3 blokken",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Blok 1"
+			},
+			{
+				"type": "image_picker",
+				"id": "block_1_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "block_1_title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "block_1_text",
+				"label": "Tekst"
+			},
+			{
+				"type": "text",
+				"id": "block_1_button_text",
+				"label": "Button tekst"
+			},
+			{
+				"type": "text",
+				"id": "block_1_button_description",
+				"label": "Button beschrijving"
+			},
+			{
+				"type": "url",
+				"id": "block_1_button",
+				"label": "Button"
+			},
+			{
+				"type": "header",
+				"content": "Blok 2"
+			},
+			{
+				"type": "image_picker",
+				"id": "block_2_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "block_2_title",
+				"label": "Titel"
+			},
+			{
+				"type": "html",
+				"id": "block_2_html",
+				"label": "HTML"
+			},
+			{
+				"type": "header",
+				"content": "Blok 3"
+			},
+			{
+				"type": "image_picker",
+				"id": "block_3_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "block_3_title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "block_3_text",
+				"label": "Tekst"
+			}
+		]
+	},
+	{
+		"name": "Bestelproces",
+		"settings": [
+			{
+				"type": "text",
+				"id": "steps_title",
+				"label": "Titel"
+			},
+			{
+				"type": "header",
+				"content": "Stap 1"
+			},
+			{
+				"type": "image_picker",
+				"id": "step_1_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "step_1_title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "step_1_text",
+				"label": "Tekst"
+			},
+			{
+				"type": "header",
+				"content": "Stap 2"
+			},
+			{
+				"type": "image_picker",
+				"id": "step_2_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "step_2_title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "step_2_text",
+				"label": "Tekst"
+			},
+			{
+				"type": "header",
+				"content": "Stap 3"
+			},
+			{
+				"type": "image_picker",
+				"id": "step_3_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "step_3_title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "step_3_text",
+				"label": "Tekst"
+			},
+			{
+				"type": "header",
+				"content": "Stap 4"
+			},
+			{
+				"type": "image_picker",
+				"id": "step_4_image",
+				"label": "Afbeelding"
+			},
+			{
+				"type": "text",
+				"id": "step_4_title",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "step_4_text",
+				"label": "Tekst"
 			}
 		]
 	}

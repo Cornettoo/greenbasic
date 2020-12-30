@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{5:function(n,o,a){"use strict";a.r(o),a.d(o,"slider",(function(){return r}));var e=a(14),s=a(10),c=a(11),i=a(12),u=a(13);function r(){console.log("hello")}e.a.use([s.a,c.a,i.a,u.a])}}]);

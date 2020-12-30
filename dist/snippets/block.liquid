@@ -1,4 +1,4 @@
-<a class="block {{ class }}" href="{{ product.url }}" aria-label="Navigeer naar {{ product.title }}">
+<a class="block {{ class }}" href="{{ product.url | within: collection }}" aria-label="Navigeer naar {{ product.title }}">
 	<picture>
 		<img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
 	</picture>

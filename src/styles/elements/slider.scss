@@ -1,0 +1,54 @@
+.slider {
+	position: relative;
+	overflow: hidden;
+
+	&__buttons {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		width: 57%;
+		z-index: 9;
+
+		&__item {
+			@include flex-cc;
+			position: absolute;
+			top: 50%;
+			transform: translate3d(0, -50%, 0);
+			width: 4.6rem;
+			height: 4.6rem;
+			border-radius: 50%;
+			color: white;
+			cursor: pointer;
+			background-color: map-get($colors, 'dark');
+
+			&--prev {
+				left: 0;
+
+				&:hover {
+					i {
+						animation: .7s prev ease forwards;
+					}
+				}
+			}
+			
+			&--next {
+				right: 0;
+
+				&:hover {
+					i {
+						animation: .7s next ease forwards;
+					}
+				}
+			}
+
+			i {
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	.swiper-slide {
+		height: auto;
+	}
+}

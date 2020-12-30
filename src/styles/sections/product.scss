@@ -1,0 +1,53 @@
+.product {
+	&__slider {
+		width: 100%;
+
+		.slider-thumbs .swiper-slide,
+		.slider-top {
+			border: 1px solid map-get($colors, 'tertiary');
+			border-radius: map-get($general, 'border-radius');
+		}
+
+		.slider-top {
+			display: flex;
+			height: 45rem;
+			margin-bottom: 2rem;
+			overflow: hidden;
+			position: relative;
+		}
+		
+		.slider-thumbs {
+			.swiper-slide {
+				width: 10rem;
+				height: 10rem;
+				margin-right: 2rem;
+				cursor: pointer;
+
+				&.swiper-slide-thumb-active {
+					border-color: darken(map-get($colors, 'tertiary'), 25%);
+				}
+
+				img {
+					width: 80%;
+				}
+			}
+		}
+
+		.swiper-slide {
+			@include flex-cc;
+			height: auto;
+			overflow: hidden;
+
+			img {
+				width: 65%;
+				max-height: 100%;
+
+				&.fullscreen {
+					object-fit: cover;
+					width: 100%;
+					min-height: 100%;
+				}
+			}
+		}
+	}
+}

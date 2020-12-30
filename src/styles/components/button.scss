@@ -11,7 +11,8 @@
 	transition: map-get($transition, 'primary');
 
 	&.button--primary,
-	&.button--dark {
+	&.button--dark,
+	&.button--light {
 		i {
 			font-size: 1.1rem;
 			margin-left: 0.4rem;
@@ -31,6 +32,15 @@
 
 		&:hover {
 			background-color: lighten(map-get($colors, 'dark'), 5%);
+		}
+	}
+
+	&.button--light {
+		color: map-get($colors, 'dark');
+		background-color: white;
+
+		&:hover {
+			background-color: darken(white, 5%);
 		}
 	}
 

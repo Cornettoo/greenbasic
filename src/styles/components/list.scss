@@ -3,7 +3,7 @@ ul {
 	margin: 0;
 
 	&.list--check {
-		&--small {
+		&.list--check--small {
 			li {
 				padding-left: 2rem;
 				font-size: 1.3rem;
@@ -18,9 +18,10 @@ ul {
 
 		li {
 			&:before {
-				content: "\e904";
+				content: "\e905";
 				font-family: 'icons';
 				font-size: 1.1rem;
+				top: .4rem;
 				color: map-get($colors, 'primary');
 			}
 		}
@@ -35,17 +36,71 @@ ul {
 			}
 		}
 	}
-	
+
 	li {
 		position: relative;
 		list-style: none;
-		padding-left: 2.1rem;
+		padding-left: 1.5rem;
 
 		&:before {
 			content: '';
 			position: absolute;
-			top: .4rem;
+			top: 1.1rem;
 			left: 0;
+			width: 0.5rem;
+			height: 0.5rem;
+			background-color: black;
+			border-radius: 50%;
+		}
+	}
+}
+
+.list--product {
+	ul {
+		ul {
+			margin-top: 0 !important;
+
+			li {
+				&::before {
+					background-color: map-get($colors, 'dark-grey');
+				}
+
+				&::after {
+					content: '-';
+					font-size: 2.8rem;
+					font-weight: 400;
+					transform: translate(28%, -43%);
+				}
+			}
+		}
+
+		li {
+			position: relative;
+			padding-left: 2.2rem;
+
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: .6rem;
+			}
+
+			&::before {
+				width: 1.4rem;
+				height: 1.4rem;
+				font-size: 1.8rem;
+				border-radius: 50%;
+				background-color: map-get($colors, 'primary');
+			}
+
+			&::after {
+				content: '+';
+				font-size: 1.9rem;
+				color: white;
+				font-weight: 600;
+				transform: translate(11%, -31%);
+			}
 		}
 	}
 }

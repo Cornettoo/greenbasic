@@ -1,0 +1,59 @@
+.steps {
+	padding: 5rem 4rem 0 4rem;
+	text-align: center;
+	border-radius: map-get($general, 'border-radius');
+	background-color: map-get($colors, 'light');
+
+	&__wrapper {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+
+		&__item {
+			padding: 0 2rem;
+			position: relative;
+			width: 25%;
+
+			&::before {
+				@include pseudo-absolute(0, auto, auto, 50%);
+				transform: translate3d(-50%, -2.2rem, 0);
+				width: 1.1rem;
+				height: 1.1rem;
+				border-radius: 50%;
+				background-color: map-get($colors, 'dark');
+			}
+
+			&:not(:last-child) {
+				&::after {
+					@include pseudo-absolute(-1.7rem, 0, 0, 50%);
+					height: 1px;
+					width: 100%;
+					background-color: map-get($colors, 'dark');
+				}
+			}
+
+			&:nth-child(2) {
+				img {
+					margin-top: 2rem;
+				}
+			}
+			
+			&:nth-child(3) {
+				img {
+					margin-top: 4rem;
+				}
+			}
+
+			img {
+				max-height: 19rem;
+				margin: 1rem 0 -5rem;
+				max-width: 16rem;
+				transform: translate3d(2.5rem, 0, 0);
+			}
+		}
+	}
+
+	h2 {
+		margin-bottom: 6rem;
+	}
+}

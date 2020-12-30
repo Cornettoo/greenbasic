@@ -19,11 +19,14 @@
 	</head>
 	<body>
 
-	{% include 'nav' %}
+	{% render 'nav' %}
+	{% render 'breadcrumbs' %}
 
 	<main role="main">
 		{{ content_for_layout }}
 	</main>
+
+	{% section 'footer' %}
 
 	{% render 'script-bundle', layout: 'theme' %}
 	</body>
