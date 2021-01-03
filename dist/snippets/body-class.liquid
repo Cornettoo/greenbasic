@@ -1,0 +1,4 @@
+{%- assign bodyClass = '' -%}
+{% if template == 'product' %}
+	{%- assign bodyClass = bodyClass | append: 'tmpl-product' -%}
+{% endif %}

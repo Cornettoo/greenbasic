@@ -1,20 +1,7 @@
 <nav class="nav">
 	<div class="nav__top">
 		<div class="container flex-cb">
-			<ul class="list list--check list--check--small">
-				{% if settings.usp_1 != blank %}
-					<li>{{ settings.usp_1 }}</li>
-				{% endif %}
-				{% if settings.usp_2 != blank %}
-					<li>{{ settings.usp_2 }}</li>
-				{% endif %}
-				{% if settings.usp_3 != blank %}
-					<li>{{ settings.usp_3 }}</li>
-				{% endif %}
-				{% if settings.usp_4 != blank %}
-					<li>{{ settings.usp_4 }}</li>
-				{% endif %}
-			</ul>
+			{% include 'usp', class: 'list--check--small' %}
 			<iframe src="https://dashboard.webwinkelkeur.nl/webshops/widget_html?id=1203104&layout=new_button-stars&theme=light&color=%23F5F5F5&show=yes&view=slider&amount=6&width=manual&width_amount=250px&height=45px&interval=5000&language=nld" scrolling="no" class="wwk-widget-iframe wwk-widget--new_button-stars wwk-widget--new_button-stars--light wwk-widget--has-tooltip--default" style="border: 0; height: 40px!important; width: 250px!important;transform: scale(0.85) translate3d(21px, 0, 0);"></iframe>
 		</div>
 	</div>

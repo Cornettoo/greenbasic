@@ -1,0 +1,32 @@
+.price {
+	display: flex;
+	align-items: center;
+
+	&.price--large {
+		font-size: 2.4rem;
+		margin-bottom: 1.8rem;
+		
+		span:not(.price--old) {
+			font-weight: 700;
+		}
+		
+		.price--old {
+			font-size: 65%;
+		}
+	}
+	
+	&--old {
+		color: map-get($colors, 'dark-grey');
+		text-decoration: line-through;
+		margin: .1rem .5rem 0 0;
+	}
+	
+	span {
+		line-height: 1;
+
+		&:not(.price--old) {
+			font-weight: 600;
+			color: map-get($colors, 'secondary');
+		}
+	}
+}

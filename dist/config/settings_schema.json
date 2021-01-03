@@ -7,6 +7,51 @@
 		"theme_support_url": "https://accepta.eu"
 	},
 	{
+		"name": "Product",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Sidebar"
+			},
+			{
+				"type": "text",
+				"id": "sidebar_title",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "sidebar_text",
+				"label": "Tekst"
+			},
+			{
+				"type": "image_picker",
+				"id": "sidebar_image",
+				"label": "Afbeelding"
+			}
+		]
+	},
+	{
+		"name": "Contact",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Gegevens"
+			},
+			{
+				"type": "text",
+				"id": "phone",
+				"label": "Telefoonnummer",
+				"info": "Je hoeft geen 0 in te voeren aan het begin, deze voegt die automatisch toe. Bijvoorbeeld: 318-252499"
+			},
+			{
+				"type": "text",
+				"id": "whatsapp",
+				"label": "WhatsApp",
+				"info": "Je hoeft geen 0 in te voeren aan het begin, deze voegt die automatisch toe. Bijvoorbeeld: 6-36081163"
+			}
+		]
+	},
+	{
 		"name": "USP",
 		"settings": [{
 				"type": "text",

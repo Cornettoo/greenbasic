@@ -16,11 +16,13 @@
 		{% capture randomFile %}{{ 'path.js' | asset_url }}{% endcapture %}
 		{% assign assetsPath = randomFile | split: 'path.js' | first %}
 		<script>window.__webpack_public_path__ = "{{ assetsPath }}"</script>
+		
+		{%- include 'body-class' -%}
 	</head>
-	<body>
+	<body class="{{- bodyClass -}}">
 
-	{% render 'nav' %}
-	{% render 'breadcrumbs' %}
+	{% include 'nav' %}
+	{% include 'breadcrumbs' %}
 
 	<main role="main">
 		{{ content_for_layout }}

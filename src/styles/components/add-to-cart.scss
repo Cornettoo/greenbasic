@@ -1,0 +1,52 @@
+.add-to-cart {
+	margin: 3rem 0 0;
+
+	&__submit {
+		display: flex;
+			
+		button {
+			width: 100%;
+			font-weight: 700;
+			
+			i {
+				font-size: 1.6rem !important;
+				margin-right: 2rem;
+			}
+		}
+	}
+
+	.input {
+		width: 100%;
+		margin-bottom: 2.8rem;
+
+		&:first-child {
+			margin-bottom: 1.8rem;
+		}
+		
+		label {
+			display: block;
+
+			span {
+				font-weight: 600;
+			}
+		}
+
+		input {
+			width: 100%;
+			padding-top: .8rem;
+			padding-bottom: .8rem;
+
+			@include placeholder {
+				color: map-get($colors, 'dark-grey');
+			}
+		}
+	}
+
+	#quantity {
+		width: 6rem;
+		padding: 1rem;
+		margin-right: 1rem;
+	}
+
+
+}

@@ -1,0 +1,8 @@
+<div class="price {{ class }}">
+	{% if product.compare_at_price %}
+		<span class="price--old">{{ product.price | money }}</span>
+		<span>{{ product.compare_at_price_max | money }}</span>
+	{% else %}
+		<span>{{ product.price | money }}</span>
+	{% endif %}
+</div>

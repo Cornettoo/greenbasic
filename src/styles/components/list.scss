@@ -5,7 +5,6 @@ ul {
 	&.list--check {
 		&.list--check--small {
 			li {
-				padding-left: 2rem;
 				font-size: 1.3rem;
 				font-weight: 600;
 				
@@ -15,14 +14,17 @@ ul {
 				}
 			}
 		}
-
+		
 		li {
+			padding-left: 2rem;
+
 			&:before {
 				content: "\e905";
 				font-family: 'icons';
 				font-size: 1.1rem;
 				top: .4rem;
 				color: map-get($colors, 'primary');
+				background-color: transparent;
 			}
 		}
 	}
@@ -62,14 +64,14 @@ ul {
 
 			li {
 				&::before {
-					background-color: map-get($colors, 'dark-grey');
+					background-color: lighten(map-get($colors, 'dark-grey'), 15%);
 				}
 
 				&::after {
 					content: '-';
 					font-size: 2.8rem;
 					font-weight: 400;
-					transform: translate(28%, -43%);
+					transform: translate(31%, -43%);
 				}
 			}
 		}
@@ -99,7 +101,7 @@ ul {
 				font-size: 1.9rem;
 				color: white;
 				font-weight: 600;
-				transform: translate(11%, -31%);
+				transform: translate(17%, -31%);
 			}
 		}
 	}

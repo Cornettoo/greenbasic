@@ -1,0 +1,45 @@
+.sidebar {
+	position: relative;
+	padding: 4rem 4.4rem 5rem;
+	margin-top: 4rem;
+	color: white;
+	background-color: map-get($colors, 'dark');
+	border-radius: map-get($general, 'border-radius');
+
+	&__image {
+		position: absolute;
+		top: 0;
+		left: 4.4rem;
+		width: 10.5rem;
+		transform: translate3d(0px, -4.5rem, 0);
+	}
+
+	&__links {
+		margin-top: 3rem;
+
+		a {
+			display: block;
+			font-weight: 600;
+
+			&:not(:last-child) {
+				margin-bottom: .8rem;
+			}
+
+			i {
+				font-size: 1.7rem;
+				margin-right: .5rem;
+				display: inline-block;
+				transform: translate3d(0, 2px, 0);
+			}
+		}
+	}
+
+	h4 {
+		font-size: 1.8rem;
+		margin-bottom: 2rem;
+	}
+
+	a {
+		color: map-get($colors, 'links');
+	}
+}

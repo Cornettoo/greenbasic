@@ -1,15 +1,12 @@
 <a class="block {{ class }}" href="{{ product.url | within: collection }}" aria-label="Navigeer naar {{ product.title }}">
 	<picture>
+		{% if product.tags contains 'Op maat te bestellen' %}
+			<span class="label">Op maat te bestellen</span>
+		{% endif %}
+		
 		<img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
 	</picture>
 	<h3>{{ product.title }}</h3>
 
-	<div class="price">
-		{% if product.compare_at_price %}
-			<span class="price--old">{{ product.price | money }}</span>
-			<span>{{ product.compare_at_price_max | money }}</span>
-		{% else %}
-			<span>{{ product.price | money }}</span>
-		{% endif %}
-	</div>
+	{% include 'price' %}
 </a>

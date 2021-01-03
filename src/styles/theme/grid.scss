@@ -4,6 +4,25 @@
 	}
 }
 
+.col {
+	&-pr {
+		@include media-breakpoint-up(md) {
+			padding-right: 2rem;
+		}
+
+		@include media-breakpoint-up(lg) {
+			padding-right: 6rem;
+		}
+	}
+
+	&-pr-pl {
+		@include media-breakpoint-up(lg) {
+			padding-right: 8rem;
+			padding-left: 5rem;
+		}
+	}
+}
+
 .p {
 	&-t {
 		&--none {

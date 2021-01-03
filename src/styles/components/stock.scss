@@ -1,0 +1,12 @@
+.stock {
+	margin-bottom: .5rem;
+	
+	&--true {
+		font-weight: 700;
+		color: map-get($colors, 'primary');
+	}
+
+	i {
+		font-size: 1.2rem;
+	}
+}

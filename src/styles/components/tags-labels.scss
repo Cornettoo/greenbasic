@@ -1,0 +1,18 @@
+.tags {
+	display: flex;
+
+	.label {
+		&:not(:last-child) {
+			margin-right: 1rem;
+		}
+	}
+}
+
+.label {
+	color: white;
+	padding: 0.3rem 1rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+	border-radius: map-get($general, 'border-radius');
+	background-color: map-get($colors, 'dark');
+}

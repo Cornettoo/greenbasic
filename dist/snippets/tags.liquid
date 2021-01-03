@@ -1,0 +1,7 @@
+<div class="tags">
+	{% for tag in product.tags %}
+		<a href="/collections/all/{{ tag | handleize }}" class="label">
+			{{ tag }}
+		</a>
+	{% endfor %}
+</div>
