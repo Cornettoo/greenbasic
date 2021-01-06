@@ -1,0 +1,70 @@
+{% schema %}
+	{
+		"name": "Team",
+		"settings": [
+			{
+				"type": "radio",
+				"id": "space_top",
+				"label": "Ruimte boven",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "radio",
+				"id": "space_bottom",
+				"label": "Ruimte onder",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			}
+		],
+		"blocks": [
+			{
+				"type": "team",
+				"name": "Teamlid",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Titel"
+					},
+					{
+						"type": "textarea",
+						"id": "text",
+						"label": "Tekst"
+					},
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Afbeelding"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}
+
+<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
+	<div class="container">
+		<div class="row blocks blocks--large">
+			{% for item in section.blocks %}
+				<div class="col col-md-6 block block--team">
+					<img src="{{ item.settings.image | img_url: 'large' }}" alt="{{ item.settings.image.alt }}">
+					<div class="block__content text">
+						<h3>{{ item.settings.title }}</h3>
+						<p>{{ item.settings.text }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,17 @@
+{% section 'header-image' %}
+{% include 'breadcrumbs' %}
+
+<section class="section p-t--medium p-b--large">
+	<div class="container">
+		<div class="text text--mw center">
+			<h1 class="h2">{{ page.title }}</h1>
+			<p>{{ page.content }}</p>
+		</div>
+	</div>
+</section>
+
+{% section 'image-text' %}
+{% section 'image-text-block' %}
+{% section 'text-image' %}
+{% section 'image-text-background' %}
+{% include 'three_blocks', space_top: 'large', space_bottom: 'large' %}

@@ -1,0 +1,86 @@
+{% schema %}
+	{
+		"name": "Afbeelding - tekst",
+		"settings": [
+			{
+				"type": "radio",
+				"id": "space_top",
+				"label": "Ruimte boven",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "radio",
+				"id": "space_bottom",
+				"label": "Ruimte onder",
+				"options": [
+					{ "value": "large", "label": "Groot" },
+					{ "value": "medium", "label": "Medium" },
+					{ "value": "small", "label": "Klein" },
+					{ "value": "none", "label": "Geen" }
+				],
+				"default": "none"
+			},
+			{
+				"type": "text",
+				"id": "subtitle",
+				"label": "Subtitel"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "text",
+				"label": "Tekst"
+			},
+			{
+				"type": "text",
+				"id": "button_text",
+				"label": "Button tekst"
+			},
+			{
+				"type": "text",
+				"id": "button_description",
+				"label": "Button beschrijving"
+			},
+			{
+				"id": "button_url",
+				"type": "url",
+				"label": "Button"
+			},
+			{
+				"id": "image",
+				"type": "image_picker",
+				"label": "Afbeelding"
+			}
+		]
+	}
+{% endschema %}
+
+<section class="section image-text p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
+	<div class="container image-text">
+		<div class="image-text__image">
+			<img src="{{ section.settings.image | img_url: 'large' }}" alt="{{ section.settings.image.alt }}">
+		</div>
+		<div class="image-text__text">
+			<p class="subtitle">{{ section.settings.subtitle }}</p>
+			<div class="text">
+				<h2 class="h3">{{ section.settings.title }}</h2>
+				{{ section.settings.text }}
+				{% include 'button', 
+					text: section.settings.button_text,
+					description: section.settings.button_description,
+					url: section.settings.button_url
+				%}
+			</div>
+		</div>
+	</div>
+</section>

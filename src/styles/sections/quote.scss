@@ -1,0 +1,10 @@
+.quote {
+	p {
+		font-size: 1.8rem;
+		font-weight: 600;
+
+		@include media-breakpoint-up(md) {
+			font-size: 2.4rem;
+		}
+	}
+}

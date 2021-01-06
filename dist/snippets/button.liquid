@@ -1,9 +1,11 @@
-{% if style != blank %}
-	{%- assign class = style -%}
-{% else %}
-	{%- assign class = 'primary' -%}
+{% if text != blank %}
+	{% if style != blank %}
+		{%- assign class = style -%}
+	{% else %}
+		{%- assign class = 'primary' -%}
+	{% endif %}
+	<a class="button button--{{ class }}" href="{{ url }}" aria-label="{{ description }}">
+		{{ text }}
+		<i class="icon icon-arrow"></i>
+	</a>
 {% endif %}
-<a class="button button--{{ class }}" href="{{ url }}" aria-label="{{ description }}">
-	{{ text }}
-	<i class="icon icon-arrow"></i>
-</a>

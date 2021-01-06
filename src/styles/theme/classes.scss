@@ -21,3 +21,24 @@
 .center {
 	text-align: center;
 }
+
+.dark {
+	color: white;
+	
+	button,
+	input {
+		color: white;
+	}
+	
+	input {
+		@include placeholder {
+			color: white;
+		}
+	}
+}
+
+.bg {
+	&--grey {
+		background-color: map-get($colors, 'light');
+	}
+}

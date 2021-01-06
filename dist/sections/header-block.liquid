@@ -1,0 +1,35 @@
+{% schema %}
+	{
+		"name": "Header",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "text",
+				"label": "Tekst"
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Afbeelding"
+			}
+		]
+	}
+{% endschema %}
+
+
+<section class="section p-t--small p-b--medium">
+   <div class="container">
+		<div class="block-text">
+			<div class="block-text__content text">
+				<h1 class="h2">{{ section.settings.title }}</h1>
+				{{ section.settings.text }}
+			</div>
+			<img src="{{ section.settings.image | img_url: 'medium' }}" alt="{{ settings.block_2_image.alt }}">
+		</div>
+   </div>
+</section>

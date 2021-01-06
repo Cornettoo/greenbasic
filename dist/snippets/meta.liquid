@@ -1,0 +1,15 @@
+{% if template == 'article' %}
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="{{ article.title }}" />
+	<meta property="og:image" content="{{ article.image | img_url: 'master' }}" />
+{% elsif template == 'product' %}
+	<meta property="og:type" content="product">
+	<meta property="og:title" content="{{ product.title }}" />
+	<meta property="og:image" content="{{ product.image | img_url: 'master' }}" />
+{% else %}
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="{{ page.title }}" />
+	<meta property="og:image" content="{{ page.image | img_url: 'master' }}" />
+{% endif %}
+<meta property="og:description" content="{{ page_description }}" />
+	

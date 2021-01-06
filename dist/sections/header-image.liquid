@@ -1,0 +1,16 @@
+{% schema %}
+	{
+		"name": "Header",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Afbeelding"
+			}
+		]
+	}
+{% endschema %}
+
+<header>
+	<img src="{{ section.settings.image | img_url: '1600x450', crop: 'center' }}" alt="{{ section.settings.image.alt }}">
+</header>

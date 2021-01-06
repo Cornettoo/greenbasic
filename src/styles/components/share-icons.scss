@@ -1,0 +1,23 @@
+.share-icons {
+	a {
+		&:not(:last-child) {
+			margin-right: 1rem;
+		}
+	}
+
+	i {
+		font-size: 1.7rem;
+	}
+
+	.sm {
+		@include media-breakpoint-up(md) {
+			display: none;
+		}
+	}
+
+	.md {
+		@include media-breakpoint-down(sm) {
+			display: none;
+		}
+	}
+}

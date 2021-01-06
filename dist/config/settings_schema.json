@@ -31,6 +31,35 @@
 		]
 	},
 	{
+		"name": "Blog",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Sidebar"
+			},
+			{
+				"type": "text",
+				"id": "sidebar_blog_title",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "sidebar_blog_text",
+				"label": "Tekst"
+			},
+			{
+				"type": "text",
+				"id": "sidebar_blog_title_social",
+				"label": "Titel"
+			},
+			{
+				"type": "image_picker",
+				"id": "sidebar_blog_image",
+				"label": "Afbeelding"
+			}
+		]
+	},
+	{
 		"name": "Contact",
 		"settings": [
 			{

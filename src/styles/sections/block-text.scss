@@ -1,0 +1,33 @@
+.block-text {
+	@include flex-cb;
+	padding: 5rem 6rem;
+	border-radius: map-get($general, 'border-radius');
+	background-color: map-get($colors, 'light');
+
+	&--large {
+		.block-text__content {
+			width: 68%;
+			padding-right: 11rem;
+		}
+
+		img {
+			margin-left: 8rem;
+		}
+		
+		p {
+			font-size: 2rem;
+			line-height: 2;
+		}
+	}
+	
+	&__content {
+		width: 65%;
+	}
+	
+	img {
+		width: 10rem;
+		max-height: 21rem;
+		margin-right: 7rem;
+		object-fit: contain;
+	}
+}

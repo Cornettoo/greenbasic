@@ -45,7 +45,12 @@
 		}
 	}
 
+	a:not(.button) {
+		font-weight: 600;
+		color: map-get($colors, 'links-dark');
+	}
+
 	.button {
-		margin-top: 3rem;
+		margin-top: 1.5rem;
 	}
 }

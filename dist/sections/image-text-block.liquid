@@ -1,6 +1,6 @@
 {% schema %}
 	{
-		"name": "Tekst",
+		"name": "Afbeelding - tekst, blok",
 		"settings": [
 			{
 				"type": "radio",
@@ -27,38 +27,14 @@
 				"default": "none"
 			},
 			{
-				"type": "checkbox",
-				"id": "center",
-				"label": "Tekst centreren"
-			},
-			{
-				"type": "radio",
-				"id": "title_tag",
-				"label": "Titel tag",
-				"options": [
-					{ "value": "h1", "label": "H1" },
-					{ "value": "h2", "label": "H2" },
-					{ "value": "h3", "label": "H3" },
-					{ "value": "h4", "label": "H4" },
-					{ "value": "h5", "label": "H5" }
-				],
-				"default": "h2"
-			},
-			{
-				"type": "text",
-				"id": "title",
-				"label": "Titel"
-			},
-			{
-				"type": "richtext",
+				"type": "textarea",
 				"id": "text",
 				"label": "Tekst"
-			}
-		],
-		"presets": [
+			},
 			{
-				"category": "Secties",
-				"name": "Tekst"
+				"id": "image",
+				"type": "image_picker",
+				"label": "Afbeelding"
 			}
 		]
 	}
@@ -66,9 +42,11 @@
 
 <section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
 	<div class="container">
-		<div class="text text--mw {% if section.settings.center %}center{% endif %}">
-			<{{ section.settings.title_tag }} {% if section.settings.title_tag == 'h1' %}class="h2"{% endif %}>{{ section.settings.title }}</{{ section.settings.title_tag }}>
-			<p>{{ section.settings.text }}</p>
+		<div class="block-text block-text--large">
+			<img src="{{ section.settings.image | img_url: 'medium' }}" alt="{{ settings.block_2_image.alt }}">
+			<div class="block-text__content text">
+				<p>{{ section.settings.text }}</p>
+			</div>
 		</div>
 	</div>
 </section>

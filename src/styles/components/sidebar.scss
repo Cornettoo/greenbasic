@@ -2,9 +2,31 @@
 	position: relative;
 	padding: 4rem 4.4rem 5rem;
 	margin-top: 4rem;
-	color: white;
 	background-color: map-get($colors, 'dark');
 	border-radius: map-get($general, 'border-radius');
+
+	&--img-right {
+		.sidebar__image {
+			right: 5rem;
+			left: auto;
+			transform: translate3d(0px, -1.5rem, 0);
+		}
+	}
+
+	&.sidebar--blog {
+		h4 {
+			font-size: 2rem;
+		}
+
+		hr {
+			margin: 3rem 0;
+			border-color: lighten(map-get($colors, 'dark'), 20%);
+		}
+
+		i {
+			color: white;
+		}
+	}
 
 	&__image {
 		position: absolute;
