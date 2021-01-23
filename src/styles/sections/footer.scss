@@ -82,27 +82,4 @@
 			}
 		}
 	}
-
-	ul {
-		li {
-			padding-left: 0 !important;
-
-			&:not(:last-child) {
-				margin-bottom: .5rem;
-			}
-			
-			&::before {
-				content: none;
-			}
-
-			a {
-				font-size: 1.4rem;
-				color: black;
-
-				i {
-					font-size: 2.4rem;
-				}
-			}
-		}
-	}
 }

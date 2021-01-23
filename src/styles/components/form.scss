@@ -4,12 +4,16 @@ form {
 	textarea,
 	select {
 		outline: 0;
-		padding: 1rem 1.6rem;
+		padding: .7rem 1.6rem;
 		border-radius: map-get($general, 'border-radius');
 		border: 1px solid map-get($colors, 'dark');
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
+
+		@include media-breakpoint-up(lg) {
+			padding: 1rem 1.6rem;	
+		}
 	}
 
 	textarea {
@@ -17,7 +21,6 @@ form {
 	}
 
 	select {
-		height: 100%;
 		cursor: pointer;
 	}
 }
@@ -69,9 +72,19 @@ input[type="checkbox"] {
 			font-size: 1.2rem;
 		}
 	}
+
 	&--search {
-		width: 37rem;
+		width: 85%;
+		width: calc(100% - 4rem);
 		position: relative;
+
+		@include media-breakpoint-up(md) {
+			width: 29rem;
+		}
+
+		@include media-breakpoint-up(lg) {
+			width: 37rem;
+		}
 
 		input {
 			padding-right: 4.5rem;
@@ -85,5 +98,47 @@ input[type="checkbox"] {
 			font-size: 1.5rem;
 			transform: translate3d(0, -40%, 0);
 		}
+	}
+
+	&__row {
+		display: flex;
+		margin-right: -1rem;
+		margin-left: -1rem;
+
+		&:not(:last-child) {
+			margin-bottom: 2rem;
+		}
+
+		.form__field {
+			flex: 1;
+			padding: 0 1rem;
+
+			&__select {
+				position: relative;
+
+				select {
+					opacity: 0;
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+				}
+
+				input {
+					pointer-events: none;
+					cursor: pointer;
+				}
+			}
+
+			input, textarea, select {
+				width: 100%;
+			}
+		}
+	}
+
+	a {
+		color: map-get($colors, 'links-dark');
+		margin-left: 2rem;
 	}
 }

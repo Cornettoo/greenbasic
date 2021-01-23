@@ -4,10 +4,16 @@
 		color: white;
 		background-color: map-get($colors, 'dark');
 
+		.container {
+			@include media-breakpoint-down(md) {
+				justify-content: flex-end;
+			}
+		}
+
 		.list {
 			li {
 				display: inline-block;
-				
+
 				&:not(:last-child) {
 					margin-right: 2rem;
 				}
@@ -17,6 +23,84 @@
 
 	&__center {
 		margin: 2.5rem 0;
+		
+		@include media-breakpoint-down(sm) {
+			margin: 2rem 0;
+
+			.container {
+				flex-flow: wrap;
+
+				.nav {
+					&__brand {
+						order: 1;
+					}
+
+					&__search {
+						order: 3;
+						width: 100%;
+						margin-top: 2rem;
+						@include flex-cb;
+
+						input {
+							padding: 0.5rem 1.2rem;
+						}
+					}
+
+					&__links {
+						order: 2;
+					}
+				}
+			}
+		}
+	}
+
+	&__hamburger {
+		width: 2.5rem;
+		height: 2.5rem;
+
+		&.nav__hamburger--close {
+			span {
+				background-color: transparent;
+	
+				&::before {
+					transform: rotate(45deg) translate3d(0.5rem, 0.2rem, 0);
+				}
+				
+				&::after {
+					transform: rotate(-45deg) translate3d(0.6rem, -0.4rem, 0);
+				}
+			}
+		}
+
+		span,
+		span::before,
+		span::after { 
+			height: .2rem;
+			width: 2.1rem;
+			border-radius: 1rem;
+			background-color: map-get($colors, 'dark');
+		}
+
+		span {
+			top: 1.2rem;
+			display: block;
+			position: relative;
+
+			&::before,
+			&::after {
+				content: '';
+				position: absolute;
+				left: 0;
+			}
+
+			&::before {
+				top: -.6rem;
+			}
+
+			&::after {
+				bottom: -.6rem;
+			}
+		}
 	}
 
 	&__bottom {
@@ -36,17 +120,58 @@
 		}
 
 		.button {
-			border-radius: 0;
-			
+			@include media-breakpoint-up(md) {
+				border-radius: 0;
+			}
+
 			i {
 				font-size: 1rem;
 				margin-left: 0.2rem;
 			}
 		}
+		
+		.nav__hamburger {
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate3d(-1.5rem, 2rem, 0);
+		}
+
+		@include media-breakpoint-down(sm) {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100vw;
+			z-index: 999;
+			padding: 5rem 0;
+			transform: translateY(-100%);
+			@include transition(transform);
+
+			&__links a {
+				display: block;
+				margin-right: 0 !important;
+				margin-bottom: 1rem;
+			}
+
+			.container {
+				flex-flow: column-reverse;
+				align-items: center;
+				text-align: center;
+			}
+		}
 	}
 
 	&__brand {
-		width: 23rem;
+		width: 17rem;
+
+		@media (min-width: 350px) {
+			width: 19rem;
+		}
+
+		@include media-breakpoint-up(lg) {
+			width: 23rem;
+		}
 
 		img {
 			width: 100%;
@@ -55,8 +180,18 @@
 
 	&__links {
 		li {
-			&:not(:last-child) {
-				margin-right: 3rem;
+			&:not(:first-child) {
+				margin-left: 1rem;
+
+				@media (min-width: 350px) {
+					margin-left: 2rem;
+				}
+			}
+
+			@include media-breakpoint-up(lg) {
+				&:not(:last-child) {
+					margin-right: 3rem;
+				}
 			}
 		}
 
@@ -67,10 +202,51 @@
 			color: map-get($colors, 'dark');
 
 			i {
-				font-size: 2.1rem;
-				margin-bottom: 0.4rem;
+				font-size: 1.9rem;
+				margin-bottom: 0.2rem;
 				display: block;
-		  }
+				
+				@include media-breakpoint-up(sm) {
+					font-size: 2.1rem;
+					margin-bottom: 0.4rem;
+				}
+			}
+
+			span {
+				&.name {
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					transform: translate(-50%, 16px);
+				}
+			}
+		}
+
+		.cart {
+			position: relative;
+
+			#cart-total {
+				position: absolute;
+				top: -1.4rem;
+				right: -.2rem;
+				color: white;
+				padding: 0.4rem;
+				font-weight: 700;
+				font-size: 1.1rem;
+				z-index: 9;
+
+				&::before {
+					@include pseudo(50%, 0, 0, 50%);
+					transform: translate3d(-50%, -50%, 0);
+					padding-bottom: 100%;
+					border-radius: 2rem;
+					width: 100%;
+					z-index: -1;
+					height: 2rem;
+					min-width: 2rem;
+					background-color: red;
+				}
+			}
 		}
 	}
 
@@ -79,5 +255,11 @@
 			font-size: 1.4rem;
 			font-weight: 600;
 		}
+	}
+}
+
+.menu-is-open {
+	.nav__bottom {
+		transform: translateY(0);
 	}
 }

@@ -2,6 +2,38 @@
 	position: relative;
 	overflow: hidden;
 
+	&-list {
+		width: 100%;
+		position: relative;
+		height: 3rem;
+
+		li {
+			@include media-breakpoint-down(md) {
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translate3d(0, -50%, 0);
+				opacity: 1;
+				@include transition(opacity, .6s);
+			
+				&:not(.active) {
+					opacity: 0;
+				}
+			}
+		}
+	}
+
+	&-list-wrapper {
+		padding: .7rem 0;
+		background-color: map-get($colors, 'light');
+
+		li {
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+			white-space: nowrap;
+		}
+	}
+
 	&__buttons {
 		position: absolute;
 		top: 50%;

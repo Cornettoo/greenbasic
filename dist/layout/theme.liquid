@@ -33,5 +33,9 @@
 	{% section 'footer' %}
 
 	{% render 'script-bundle', layout: 'theme' %}
+
+	{% if template == 'page.contact' %}
+		<script src="https://www.google.com/recaptcha/api.js?render=6LcpgSoaAAAAANgxrxQLkVCUXOyFVdey50Z9KExl"></script>
+	{% endif %}
 	</body>
 </html>

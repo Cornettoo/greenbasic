@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icons';
-	src: url('./icons.eot?u1sfw');
-	src: url('./icons.eot?u1sfw#iefix') format('embedded-opentype'),
-		url('./icons.ttf?u1sfw') format('truetype'),
-		url('./icons.woff?u1sfw') format('woff'),
-		url('./icons.svg?u1sfw#icons') format('svg');
+	src: url('./icons.eot?12x1sj');
+	src: url('./icons.eot?12x1sj#iefix') format('embedded-opentype'),
+		url('./icons.ttf?12x1sj') format('truetype'),
+		url('./icons.woff?12x1sj') format('woff'),
+		url('./icons.svg?12x1sj#icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;

@@ -89,7 +89,7 @@
 <section class="section featured-cat m-t--{{ section.settings.space_top }} m-b--{{ section.settings.space_bottom }}">
 	<div class="container">
 		<div class="row">
-			<div class="col col-md-6 col-lg-5 featured-cat__text text">
+			<div class="col-12 col-md-6 col-lg-5 featured-cat__text text">
 				<h2>{{ section.settings.title }}</h2>
 				{{ section.settings.text }}
 				<ul class="list--check">
@@ -103,10 +103,10 @@
 					url: section.settings.button_url
 				%}
 			</div>
-			<div class="col col-md-6 col-lg-6 offset-lg-1 featured-cat__blocks">
-				<div class="row blocks">
+			<div class="col-12 col-md-6 col-lg-7 col-xl-6 offset-xl-1 swiper-container featured-cat__blocks">
+				<div class="row blocks swiper-wrapper">
 					{% for block in products %}
-						<div class="col-md-6">
+						<div class="col-4 col-md-7 col-lg-6 swiper-slide">
 							{% include 'block', product: all_products[block.settings.feature_product],
 								class: 'block--product block--white' 
 							%}

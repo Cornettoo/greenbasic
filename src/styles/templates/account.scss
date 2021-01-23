@@ -1,0 +1,103 @@
+#recover_password {
+	a i {
+		font-size: 1.1rem;
+	}
+}
+
+
+.account {
+	&__menu {
+		position: sticky;
+		top: 5rem;
+
+		h6 {
+			font-size: 2rem;
+			margin-bottom: 1.8rem;
+		}
+
+		ul {
+			li {
+				padding-left: 0;
+				
+				&:not(:last-child) {
+					margin-bottom: .7rem
+				}
+
+				&::before {
+					content: none;
+				}
+
+				a {
+					color: map-get($colors, 'dark');
+					
+					&:hover,
+					&.active {
+						color: map-get($colors, 'links-dark');
+					}
+					
+					&.active {
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+
+	&__block {
+		&:not(:last-child) {
+			margin-bottom: 3rem;
+		}
+
+		&--add-address {
+			.block-border {
+				margin-top: 2rem;
+
+				&:not(.active) {
+					display: none;
+				}
+			}
+
+			form {
+				margin-top: 0 !important;
+				display: block !important;
+			}
+		}
+	}
+
+	.block-border {
+		padding: 1.5rem 2.4rem;
+		
+		.block-border__bottom {
+			display: flex;
+			align-items: center;
+			flex-flow: wrap;
+
+			button {
+				color: map-get($colors, 'links-dark') !important;
+				margin-right: 2rem;
+			}
+		}
+
+		form:not(.address-delete-form) {
+			margin-top: 2rem;
+
+			&:not(.active) {
+				display: none;
+			}
+		}
+	}
+
+	form {
+		select, input {
+			padding: 0.3rem 1rem;
+		}
+
+		select {
+			height: 35px;
+		}
+	}
+
+	.form__row:not(:last-child) {
+		margin-bottom: 1.3rem;
+	}
+}

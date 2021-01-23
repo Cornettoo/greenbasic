@@ -1,0 +1,36 @@
+.block-bg {
+	flex: 1;
+	padding: 4rem 5rem;
+	border-radius: map-get($general, 'border-radius');
+	background-color: map-get($colors, 'light');
+
+	&:first-child {
+		margin-right: 2rem;
+	}
+	
+	&:last-child {
+		margin-left: 2rem;
+	}
+
+	span {
+		font-size: 7rem;
+		line-height: 0.8;
+		font-weight: 700;
+		display: block;
+		margin-bottom: 2rem;
+	}
+
+	a {
+		color: map-get($colors, 'links-dark');
+
+		i {
+			margin-left: .4rem;
+			font-size: 1.1rem;
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		margin-top: 4rem;
+	}
+}

@@ -13,8 +13,13 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-facebook:before {
-	content: "\e908";
+.icon-email {
+	transform: translate3d(0, 1px, 0);
+	display: inline-block;
+
+	&:before {
+		content: "\e90e";
+	}
 }
 
 .icon-arrow-left:before {
@@ -47,6 +52,10 @@
 
 .icon-twitter:before {
 	content: "\e907";
+}
+
+.icon-facebook:before {
+	content: "\e908";
 }
 
 .icon-linkedin:before {

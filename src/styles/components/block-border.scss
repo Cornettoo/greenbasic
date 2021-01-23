@@ -1,0 +1,25 @@
+.block-border {
+	padding: 3rem;
+	border: 1px solid map-get($colors, 'tertiary');
+	border-radius: map-get($general, 'border-radius');
+
+	&--height {
+		height: 100%;
+	}
+
+	.block-border__bottom {
+		margin-top: 1rem;
+	}
+
+	.h4 {
+		margin-bottom: 2rem;
+	}
+
+	a {
+		font-weight: 400 !important;
+
+		&:not(:hover) {
+			color: map-get($colors, 'dark') !important;
+		}
+	}
+}

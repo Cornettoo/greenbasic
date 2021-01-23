@@ -81,7 +81,7 @@
 			{%- assign menuItem = linklists[item.settings.menu] -%}
 			<div class="col">
 				<h5>{{ menuItem.title }}</h5>
-				<ul>
+				<ul class="menu">
 					{% for link in menuItem.links %}
 						<li>
 							{% if item.settings.social %}

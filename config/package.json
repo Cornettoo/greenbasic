@@ -12,6 +12,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.8.0",
     "autoprefixer": "^9.7.6",
+    "axios": "^0.21.1",
     "babel-core": "^6.26.3",
     "babel-laoder": "^0.0.1-security",
     "babel-loader": "^8.0.6",

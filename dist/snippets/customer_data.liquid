@@ -1,0 +1,15 @@
+{% if object.company != blank %}
+	<p>{{ object.company }}</p>
+{% endif %}
+{% if object.first_name != blank or object.last_name != blank %}
+	<p>{{ object.first_name }} {{ object.last_name }}</p>
+{% endif %}
+{% if object.phone != blank %}
+	<p>{{ object.phone }}</p>
+{% endif %}
+{% if object.address1 != blank %}
+	<p>{{ object.address1 }}</p>
+{% endif %}
+{% if object.zip != blank or object.city != blank or object.country != blank %}
+	<p>{{ object.zip }} {{ object.city }} {{ object.country }}</p>
+{% endif %}

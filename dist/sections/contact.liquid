@@ -1,0 +1,83 @@
+{% schema %}
+	{
+		"name": "Contact",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Locatie"
+			},
+			{
+				"type": "text",
+				"id": "title_first",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "text_first",
+				"label": "Tekst"
+			},
+			{
+				"type": "header",
+				"content": "Contact"
+			},
+			{
+				"type": "text",
+				"id": "title_second",
+				"label": "Titel"
+			},
+			{
+				"type": "header",
+				"content": "Social media"
+			},
+			{
+				"type": "text",
+				"id": "title_tertiary",
+				"label": "Titel"
+			}
+		]
+	}
+{% endschema %}
+
+
+<section class="section p-b--medium">
+   <div class="container text">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="block-border block-border--height">
+					<h3 class="h4">{{ section.settings.title_first }}</h3>
+					{{ section.settings.text_first }}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="block-border block-border--height">
+					<h3 class="h4">{{ section.settings.title_second }}</h3>
+					<div class="columns">
+						<div class="column">
+							<a href="tel:+31{{ settings.phone }}" aria-label="Bel ons op: 0{{ settings.phone }}"><i class="icon-phone"></i> 0{{ settings.phone }}</a>
+							<a href="tel:+31{{ settings.whatsapp }}" aria-label="Bel ons op: 0{{ settings.whatsapp }}"><i class="icon-whatsapp"></i> 0{{ settings.whatsapp }}</a>
+						</div>
+						<div class="column column--large">
+							<a href="mailto:{{ settings.email_first }}" aria-label="E-mail ons: {{ settings.email_first }}"><i class="icon-email"></i> {{ settings.email_first }}</a>
+							<a href="mailto:{{ settings.email_second }}" aria-label="E-mail ons: {{ settings.email_second }}"><i class="icon-email"></i> {{ settings.email_second }}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="block-border block-border--height">
+					<h3 class="h4">{{ section.settings.title_tertiary }}</h3>
+					<ul class="menu">
+						{% for link in linklists.volg-ons.links %}
+							<li>
+								<a href="{{ link.url }}" target="_blank" rel="noopener" aria-label="Navigeer naar {{ link.title }}">
+									<i class="icon-{{ link.title | downcase }}"></i>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+		</div>
+   </div>
+</section>

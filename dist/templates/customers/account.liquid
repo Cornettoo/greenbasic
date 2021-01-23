@@ -1,1 +1,46 @@
-<!-- /templates/customers/account.liquid -->
+<section class="section account p-t--small p-b--medium">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-3">
+            <div class="account__menu">
+					<h6>Menu</h6>
+               <ul>
+                  <li><a href="/account" class="active">Account overzicht</a></li>
+                  <li><a href="/account/addresses">Gegevens</a></li>
+                  <li><a href="/account/logout">Uitloggen</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="col-md-9">
+				<div class="block-text block-text--account">
+					<div class="block-text__content text">
+						<h1 class="h2">Hallo, {{ customer.first_name }}</h1>
+						<p>{{ settings.account_intro_text }}</p>
+					</div>
+					<img src="{{ settings.account_intro_image | img_url: '140x' }}" alt="{{ settings.account_intro_image.alt }}">
+				</div>
+
+				<div class="block-bg__wrapper">
+					<div class="block-bg">
+						<span>{{ customer.orders_count }}</span>
+						<p>Aantal bestellingen</p>
+						<a href="#">Toon alle bestellingen <i class="icon-arrow"></i></a>
+					</div>
+					<div class="block-bg">
+						<h2>Gegevens</h2>
+						{% if customer.default_address != blank %}
+							<p>{{ customer.default_address.address1 }}<br>{{ customer.default_address.city }} {{ customer.default_address.zip }}</p>
+							<a href="/account/addresses">Gegevens wijzigen <i class="icon-arrow"></i></a>
+							{% else %}
+							<p>Je hebt nog geen adres toegevoegd.</p>
+							<a href="/account/addresses">Adres toevoegen <i class="icon-arrow"></i></a>
+						{% endif %}
+					</div>
+				</div>
+
+
+         </div>
+      </div>
+   </div>
+</section>

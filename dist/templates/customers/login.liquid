@@ -1,1 +1,81 @@
-<!-- /templates/customers/login.liquid -->
+<section class="section p-t--small p-b--medium">
+   <div class="container">
+		<div class="container__small">
+			<div class="note form-success" id="resetSuccess" style="display:none;">
+				We've sent you an email with a link to update your password.
+			</div>
+
+			<div id="customer_login">
+				<h1 class="h2">Inloggen</h1>
+				{% form 'customer_login', class: 'form' %}
+					{{ form.errors | default_errors }}
+
+					<div class="form__row">
+						<div class="form__field">
+							<label class="hide" for="customer_email">Email Address</label>
+							<input id="customer_email" name="customer[email]" placeholder="E-mailadres" type="email"/>
+						</div>
+					</div>
+					<div class="form__row">
+						<div class="form__field">
+							<label class="hide" for="customer_password">Password</label>
+							<input id="customer_password" name="customer[password]" placeholder="Wachtwoord" type="password"/>
+						</div>
+					</div>
+					<div class="form__row">
+						<div class="form__field">
+							<button type="submit" class="button button--primary">Inloggen</button>
+							<a href="#recover" onclick="showRecoverPasswordForm();return false;" id="RecoverPassword">Wachtwoord vergeten?</a>
+						</div>
+					</div>
+				{% endform %}
+
+				<div class="m-t--small">
+					<h6>Heb je nog geen account?</h6>
+					<p>Door een account aan te maken in deze winkel kunt u het betalingsproces sneller doorlopen, meerdere adressen opslaan, bestellingen bekijken en volgen en meer.</p>
+					<a href="/account/register" aria-label="Maak een nieuw account aan" class="button button--primary">Maak een account aan</a>
+				</div>
+			</div>
+			
+			<div id="recover_password" style="display: none;">
+				<h2>Wachtwoord vergeten</h2>
+				{% form 'recover_customer_password', class: 'form' %}
+					{{ form.errors | default_errors }}
+										
+					<div class="form__row">
+						<div class="form__field">
+							<label class="hide" for="customer_email_recover">E-mailadres</label>
+							<input id="customer_email_recover" name="email" placeholder="E-mailadres" type="email"/>
+						</div>
+					</div>
+		
+					<button type="submit" class="button button--primary">Verzenden</button>
+				{% endform %} 
+				<div class="text">
+					<br>
+					<a href="#recover" onclick="hideRecoverPasswordForm();return false;" id="RecoverPassword"><i class="icon-arrow-left"></i> Terug naar inloggen</a>
+				</div>
+			</div>
+		</div>
+   </div>
+</section>
+
+<script>
+	function showRecoverPasswordForm() {
+	  document.getElementById('recover_password').style.display = 'block';
+	  document.getElementById('customer_login').style.display='none';
+	}
+ 
+	function hideRecoverPasswordForm() {
+	  document.getElementById('recover_password').style.display = 'none';
+	  document.getElementById('customer_login').style.display = 'block';
+	}
+ 
+	// Allow deep linking to the recover password form
+	if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+ 
+	// reset_success is only true when the reset form is
+	{% if reset_success %}
+	  document.getElementById('resetSuccess').style.display = 'block';
+	{% endif %}
+ </script>

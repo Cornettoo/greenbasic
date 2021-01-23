@@ -39,7 +39,7 @@
          <div class="col col-md-6 col-pr-pl product-buy-block">
 				{% include 'price', class: 'price--large' %}
 				{% include 'stock' %}
-				
+
 				{% if product.available %}
 					<p>{{ product.metafields.global.shipping }}</p>
 					{% include 'add-to-card' %}

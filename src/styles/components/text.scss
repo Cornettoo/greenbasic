@@ -28,6 +28,16 @@
 		}
 	}
 
+	&-p-no-margin {
+		p {
+			margin-bottom: 0;
+		}
+		
+		form p {
+			margin-bottom: 2rem;
+		}
+	}
+
 	ul,
 	ol {
 		&:not(:first-child) {
@@ -45,9 +55,15 @@
 		}
 	}
 
-	a:not(.button) {
-		font-weight: 600;
-		color: map-get($colors, 'links-dark');
+	a {
+		&:not(.button):not(.label) {
+			font-weight: 600;
+			color: map-get($colors, 'links-dark');
+		}
+
+		i {
+			margin-right: 0.4rem;
+		}
 	}
 
 	.button {

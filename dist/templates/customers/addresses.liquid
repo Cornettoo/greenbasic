@@ -1,1 +1,73 @@
-<!-- /templates/customers/addresses.liquid -->
+<section class="section account p-t--small p-b--medium">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-3">
+            <div class="account__menu">
+					<h6>Menu</h6>
+               <ul>
+                  <li><a href="/account">Account overzicht</a></li>
+                  <li><a href="/account/addresses" class="active">Gegevens</a></li>
+                  <li><a href="/account/logout">Uitloggen</a></li>
+               </ul>
+            </div>
+         </div>
+
+         <div class="col-md-9">
+				<div class="account__block">
+					<div id='kca-embed'>
+						<div id="loading-data" class="center">
+							<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+							<p>Gegevens worden geladen</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="account__block">
+					<h4>Woon- of vestigingsadres</h4>
+					<div class="block-border text-p-no-margin">
+						{% render 'customer_data', object: customer.default_address %}
+						<div class="block-border__bottom">
+							<button data-edit-address="{{ customer.default_address.id }}">Pas adres aan</button>
+						</div>
+						
+						{% render "form-edit-address", address: customer.default_address, checkboxId: 54, default: true %}
+					</div>
+				</div>
+				
+				{% if customer.addresses.size > 1 %}
+					<h4>Overige adressen</h4>
+					{% for address in customer.addresses %}
+						{% if address.id != customer.default_address.id %}
+							<div class="account__block">
+								<div class="block-border text-p-no-margin">
+									{% render 'customer_data', object: address %}
+									<div class="block-border__bottom">
+										<button data-edit-address="{{ address.id }}">Pas adres aan</button>
+
+										<form class="address-delete-form" method="post" action="/account/addresses/{{ address.id }}" data-confirm-message="Weet je zeker dat je wilt verwijderen">
+											<input type="hidden" name="_method" value="delete" />
+											<button type="submit">Verwijderen</button>
+										</form>
+									</div>
+									
+									{% render "form-edit-address", address: address, checkboxId: forloop.index %}
+								</div>
+							</div>
+						{% endif %} 
+					{% endfor %} 
+				{% endif %}
+				
+				<div class="account__block account__block--add-address">
+					<button class="button button--primary" data-add-address>Adres toevoegen</button>
+					<div class="block-border" data-add-address-wrapper>
+						{% render "form-edit-address", address: customer.new_address, checkboxId: 102 %}
+					</div>
+				</div>
+
+
+
+
+         </div>
+      </div>
+   </div>
+</section>

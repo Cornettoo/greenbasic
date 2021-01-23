@@ -13,4 +13,24 @@ import {
 } from './scripts/slider'
 slider();
 
+import {
+	accordion
+} from './scripts/accordion'
+accordion();
+
+import {
+	form
+} from './scripts/form'
+form();
+
+import {
+	account
+} from './scripts/account'
+account();
+
+import {
+	cart
+} from './scripts/cart'
+cart();
+
 import "./styles/bundle.scss";

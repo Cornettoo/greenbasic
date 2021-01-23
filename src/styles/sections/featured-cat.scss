@@ -1,5 +1,6 @@
 .featured-cat {
 	background-color: map-get($colors, 'light');
+	overflow: hidden;
 
 	&__text,
 	&__blocks {
@@ -7,8 +8,55 @@
 		padding-bottom: 4rem;
 
 		@include media-breakpoint-up(md) {
+			padding-top: 6rem;
+			padding-bottom: 6rem;
+		}
+
+		@include media-breakpoint-up(xl) {
 			padding-top: 7rem;
 			padding-bottom: 7rem;
+		}
+	}
+
+	&__blocks {
+		padding: 2rem 15px;
+
+		@include media-breakpoint-up(md) {
+			padding-left: 5rem;
+		}
+		
+		@include media-breakpoint-up(xl) {
+			padding-left: 0;
+		}
+
+		@include media-breakpoint-only(md) {
+			width: 50vw;
+			flex: none;
+			max-width: unset;
+		}
+
+		.row {
+			@include media-breakpoint-down(lg) {
+				flex-flow: nowrap;
+
+
+				&.swiper-wrapper {
+					height: auto;
+				}
+
+				.swiper {
+					&-slide {
+						height: auto;
+						width: 23rem;
+						max-width: unset;
+						flex: none;
+
+						@include media-breakpoint-only(md) {
+							min-width: 260px;
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -16,7 +64,12 @@
 		position: relative;
 		z-index: 1;
 
+		@include media-breakpoint-up(lg) {
+			padding-right: 4rem;
+		}
+		
 		@include media-breakpoint-up(xl) {
+			padding-right: 0;
 			padding-right: 15rem;
 		}
 
@@ -25,10 +78,22 @@
 			width: 60vw;
 			z-index: -1;
 			background-color: map-get($colors, 'dark');
+
+			@include media-breakpoint-down(sm) {
+				left: 50%;
+				transform: translate3d(-50%, 0, 0);
+				width: 110vw;
+			}
 		}
 
 		h2, li, a, p {
 			color: white;
+		}
+	}
+
+	.row {
+		@include media-breakpoint-only(md) {
+			flex-flow: nowrap;
 		}
 	}
 }

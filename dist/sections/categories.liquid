@@ -68,7 +68,7 @@
 				{% when 2 %}
 					{%- assign blockClass = 'col-md-6' -%}
 				{% else %}
-					{%- assign blockClass = 'col-md-4' -%}
+					{%- assign blockClass = 'col-sm-6 col-md-4' -%}
 			{% endcase %}
 			{% for block in section.blocks %}
 				<div class="{{ blockClass }}" {{ block.shopify_attributes }}>

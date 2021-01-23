@@ -1,0 +1,66 @@
+{% schema %}
+	{
+		"name": "Veelgestelde vragen",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Titel"
+			},
+			{
+				"type": "richtext",
+				"id": "text",
+				"label": "Tekst"
+			}
+		],
+		"blocks": [
+			{
+				"type": "questions",
+				"name": "Vraag",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Titel"
+					},
+					{
+						"type": "richtext",
+						"id": "text",
+						"label": "Tekst"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}
+
+<section class="section bg--grey p-t--medium p-b--medium">
+   <div class="container text">
+		<div class="row">
+			<div class="col-md-4 col-pr--large">
+				<h3>{{ section.settings.title }}</h3>
+				{{ section.settings.text }}
+				<a href="mailto:{{ settings.email_first }}" aria-label="E-mail ons: {{ settings.email_first }}"><i class="icon-email"></i> {{ settings.email_first }}</a>
+			</div>
+			<div class="col-md-8">
+				<div class="accordion">
+					{%- for accordion_item in section.blocks -%}
+						<div class="accordion__item">
+							<div class="accordion__item__header grider {% if forloop.first %}accordion__item__header--active{% endif %}">
+								<h6 class="grider__title m-b--none">{{ accordion_item.settings.title }}</h6>
+								<span class="accordion__icon"></span>
+							</div>
+							<div class="accordion__item__body {% if forloop.first %}accordion__item__body--active{% endif %}">
+								<div class="accordion__item__body__inner">
+									<div class="text">
+										{{ accordion_item.settings.text }}
+									</div>
+								</div>
+							</div>
+						</div>
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+   </div>
+</section>

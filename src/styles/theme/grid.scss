@@ -2,6 +2,13 @@
 	@include media-breakpoint-up(xl) {
 		max-width: 1180px;
 	}
+	
+	.container__small {
+		@include media-breakpoint-up(md) {
+			max-width: 46rem;
+			margin: 0 auto;
+		}
+	}
 }
 
 .col {

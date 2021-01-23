@@ -1,0 +1,138 @@
+{% schema %}
+	{
+		"name": "Openingstijden, formulier",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Openingstijden"
+			},
+			{
+				"type": "text",
+				"id": "title_first",
+				"label": "Titel"
+			},
+			{
+				"type": "text",
+				"id": "monday",
+				"label": "Maandag"
+			},
+			{
+				"type": "text",
+				"id": "tuesday",
+				"label": "Dinsdag"
+			},
+			{
+				"type": "text",
+				"id": "wednesday",
+				"label": "Woensdag"
+			},
+			{
+				"type": "text",
+				"id": "thursday",
+				"label": "Donderdag"
+			},
+			{
+				"type": "text",
+				"id": "friday",
+				"label": "Vrijdag"
+			},
+			{
+				"type": "text",
+				"id": "saturday",
+				"label": "Zaterdag"
+			},
+			{
+				"type": "text",
+				"id": "sunday",
+				"label": "Zondag"
+			},
+			{
+				"type": "header",
+				"content": "Formulier"
+			},
+			{
+				"type": "text",
+				"id": "title_second",
+				"label": "Titel"
+			}
+		]
+	}
+{% endschema %}
+
+
+<section class="section p-b--medium">
+   <div class="container">
+		<div class="row">
+			<div class="col-md-4 text">
+				<h3 class="h4">{{ section.settings.title_first }}</h3>
+				<table class="no-style">
+					<tr>
+						<td>Maandag:</td>
+						<td>{{ section.settings.monday }}</td>
+					</tr>
+					<tr>
+						<td>Dinsdag:</td>
+						<td>{{ section.settings.tuesday }}</td>
+					</tr>
+					<tr>
+						<td>Woensdag:</td>
+						<td>{{ section.settings.wednesday }}</td>
+					</tr>
+					<tr>
+						<td>Donderdag:</td>
+						<td>{{ section.settings.thursday }}</td>
+					</tr>
+					<tr>
+						<td>Vrijdag:</td>
+						<td>{{ section.settings.friday }}</td>
+					</tr>
+					<tr>
+						<td>Zaterdag:</td>
+						<td>{{ section.settings.saturday }}</td>
+					</tr>
+					<tr>
+						<td>Zondag:</td>
+						<td>{{ section.settings.sunday }}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-8 col-lg-7 offset-lg-1">
+				<h3 class="h4">{{ section.settings.title_second }}</h3>
+				{% form 'contact', class: 'form form--contact' %}
+					{% include 'form-messages' %}
+
+					<div class="form__row">
+						<div class="form__field">
+							<label class="hide" for="ContactFormName">Naam</label>
+							<input type="text" id="ContactFormName" name="contact[name]" placeholder="Naam" required="true">
+						</div>
+						<div class="form__field">
+							<label class="hide" for="ContactFormCompany">Bedrijf</label>
+							<input type="text" id="ContactFormCompany" name="contact[company]" placeholder="Bedrijf">
+						</div>
+					</div>
+
+					<div class="form__row">
+						<div class="form__field">
+							<label class="hide" for="ContactFormEmail">E-mailadres</label>
+							<input type="email" id="ContactFormEmail" name="contact[email]" placeholder="E-mailadres" required="true">
+						</div>
+						<div class="form__field">
+							<label class="hide" for="ContactFormPhone">Telefoonnummer</label>
+							<input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="Telefoonnummer">
+						</div>
+					</div>
+
+					<div class="form__row">
+						<div class="form__field">
+							<label class="hide" for="ContactFormMessage">Uw bericht</label>
+							<textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="Uw bericht" required="true"></textarea>
+						</div>
+					</div>
+					
+					<button type="submit" class="button button--primary">Verzenden <i class="icon-arrow"></i></button>
+				{% endform %}
+			</div>
+		</div>
+   </div>
+</section>

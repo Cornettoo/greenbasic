@@ -1,0 +1,26 @@
+.columns {
+	display: flex;
+	flex-flow: wrap;
+
+	.column {
+		flex: 1;
+		display: flex;
+		flex-flow: column;
+
+		&--large {
+			flex: 2;
+		}
+
+		a {
+			margin-bottom: 1rem;
+
+			i {
+				font-size: 1.9rem;
+
+				&.icon-email {
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+}

@@ -1,14 +1,14 @@
 <nav class="nav">
 	<div class="nav__top">
-		<div class="container flex-cb">
-			{% include 'usp', class: 'list--check--small' %}
+		<div class="container flex flex-cb">
+			{% include 'usp', class: 'list--check--small slider-list md-up' %}
 			<iframe src="https://dashboard.webwinkelkeur.nl/webshops/widget_html?id=1203104&layout=new_button-stars&theme=light&color=%23F5F5F5&show=yes&view=slider&amount=6&width=manual&width_amount=250px&height=45px&interval=5000&language=nld" scrolling="no" class="wwk-widget-iframe wwk-widget--new_button-stars wwk-widget--new_button-stars--light wwk-widget--has-tooltip--default" style="border: 0; height: 40px!important; width: 250px!important;transform: scale(0.85) translate3d(21px, 0, 0);"></iframe>
 		</div>
 	</div>
 	<div class="nav__center">
-		<div class="container flex-cb">
+		<div class="container flex flex-cb">
 			
-			<a href="/" aria-label="Navigeer naar de homepagina" class="nav__brand">
+			<a href="/" aria-label="Navigeer naar de homepagina" class="nav__brand flex">
 				<img src="{{ settings.logo }}" alt="Logo">
 			</a>
 
@@ -17,16 +17,20 @@
 					<input type="text" placeholder="Zoek naar een product" name="q" value="{{ search.terms | escape }}"/>
 					<button type="submit"><i class="icon-search"></i></button>
 				</form>
+
+				<div class="nav__hamburger sm-down">
+					<span></span>
+				</div>
 			</div>
 
 			<div class="nav__links">
-				<ul class="list--disable flex-w center">
+				<ul class="list--disable flex flex-w center">
 					<li>
 						{% if shop.customer_accounts_enabled %}
 							{% if customer %}
 								<a href="{{ routes.account_url }}">
 									<i class="icon-user"></i>
-									Account
+									<span>Welkom</span> <span class="name">{{ customer.first_name }}</span>
 								</a>
 							{% else %}
 								<a href="{{ routes.account_login_url }}">
@@ -37,12 +41,13 @@
 						{% endif %}
 					</li>
 					<li>
-						<a href="/cart" aria-label="Navigeer naar de winkelmandpagina">
+						<a href="/cart" aria-label="Navigeer naar de winkelmandpagina" class="cart">
 							<i class="icon-cart"></i>
-							€ 0.00
+							<span id="cart-total">{{ cart.item_count }} </span>
+							€ <span id="cart-price">{{ cart.original_total_price | money | remove: '€' }}</span>
 						</a>
 					</li>
-					<li>
+					<li class="lg-up">
 						<a href="{{ settings.contact_link }}" aria-label="Navigeer naar de contactpagina">
 							<i class="icon-phone"></i>
 							Contact
@@ -53,7 +58,10 @@
 		</div>
 	</div>
 	<div class="nav__bottom">
-		<div class="container flex-b">
+		<div class="nav__hamburger nav__hamburger--close sm-down">
+			<span></span>
+		</div>
+		<div class="container flex flex-b">
 			<button id="nav-button" class="button button--primary">
 				Assortiment
 				<i class="icon-select"></i>
@@ -66,3 +74,9 @@
 		</div>
 	</div>
 </nav>
+
+<div class="slider-list-wrapper sm-down">
+	<div class="container">
+		{% include 'usp', class: 'slider-list list--check--small flex flex-cb' %}
+	</div>
+</div>
