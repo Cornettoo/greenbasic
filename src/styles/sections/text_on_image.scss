@@ -1,12 +1,17 @@
 .text-on-image {
 	position: relative;
+	overflow: hidden;
 
 	.text {
-		@extend .text-on-image;
-		padding: 8.5rem 0;
+		position: relative;
 		z-index: 1;
 		color: white;
-		width: 52rem;
+		padding: 4.5rem 0;
+
+		@include media-breakpoint-up(md) {
+			padding: 8.5rem 0;
+			width: 52rem;
+		}
 
 		&::before,
 		&::after {

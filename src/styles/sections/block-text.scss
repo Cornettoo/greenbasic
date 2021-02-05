@@ -1,8 +1,12 @@
 .block-text {
 	@include flex-cb;
-	padding: 5rem 6rem;
+	padding: 2.5rem 3rem;
 	border-radius: map-get($general, 'border-radius');
 	background-color: map-get($colors, 'light');
+
+	@include media-breakpoint-up(md) {
+		padding: 5rem 6rem;
+	}
 
 	&.block-text--account {
 		padding: 2.5rem 5rem;
@@ -18,36 +22,55 @@
 	}
 
 	&.block-text--large {
-		.block-text__content {
-			width: 68%;
-			padding-right: 11rem;
-		}
 
-		img {
-			margin-left: 8rem;
-		}
-		
 		p {
-			font-size: 2rem;
+			font-size: 1.7rem;
 			line-height: 2;
 		}
 
 		img {
 			width: 10rem;
-			max-height: 21rem;
+			max-height: 17rem;
 			object-position: center;
+		}
+
+		@include media-breakpoint-up(lg) {
+			.block-text__content {
+				width: 68%;
+				padding-right: 11rem;
+			}
+
+			img {
+				margin-left: 8rem;
+				max-height: 21rem;
+			}
+
+			p {
+				font-size: 2rem;
+			}
 		}
 	}
 	
 	&__content {
-		width: 65%;
+		@include media-breakpoint-up(md) {
+			width: 70%;
+		}
+		
+		@include media-breakpoint-up(lg) {
+			width: 65%;
+		}
 	}
 	
 	img {
-		width: 19rem;
+		width: 13rem;
 		max-height: 10rem;
-		margin-right: 7rem;
 		object-fit: contain;
 		object-position: right;
+
+		@include media-breakpoint-up(lg) {
+			width: 19rem;
+			max-height: 10rem;
+			margin-right: 7rem;
+		}
 	}
 }

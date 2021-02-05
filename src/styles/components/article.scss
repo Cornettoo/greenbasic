@@ -14,15 +14,23 @@
 	img {
 		display: block;
 		width: 100%;
-		height: 35rem;
+		height: 20rem;
 		object-fit: cover;
 		border-radius: map-get($general, 'border-radius');
+
+		@include media-breakpoint-up(md) {
+			height: 25rem;
+		}
+
+		@include media-breakpoint-up(lg) {
+			height: 35rem;
+		}
 	}
 
 	h3 {
 		font-size: 1.8rem;
 		color: map-get($colors, 'dark');
-		padding: 1.5rem 2rem 0 2rem;
+		padding: 1.5rem 0 0 0;
 
 		@include media-breakpoint-up(md) {
 			font-size: 2rem;

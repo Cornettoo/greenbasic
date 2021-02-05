@@ -63,13 +63,14 @@
 
 <section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
 	<div class="container">
-		<div class="section__heading">
+		<div class="section__heading flex flex-cb">
 			<h2>{{ section.settings.title }}</h2>
 			{% include 'button', 
 				text: section.settings.button_text,
 				description: section.settings.button_description,
 				url: section.settings.button_url,
-				style: 'dark'
+				style: 'dark',
+				class: 'md-up'
 			%}
 		</div>
 		<div class="row blocks slider slider--blocks">
@@ -84,10 +85,15 @@
 					</div>
 				{% endfor %}
 			</div>
-			<div class="slider__buttons">
-				<div class="slider__buttons__item slider__buttons__item--prev"><i class="icon-arrow-left"></i></div>
-				<div class="slider__buttons__item slider__buttons__item--next"><i class="icon-arrow"></i></div>
-			</div>
+			{% include 'slider-nav' %}
+		</div>
+		<div class="section__footer sm-down">
+			{% include 'button', 
+				text: section.settings.button_text,
+				description: section.settings.button_description,
+				url: section.settings.button_url,
+				style: 'dark'
+			%}
 		</div>
 	</div>
 </section>

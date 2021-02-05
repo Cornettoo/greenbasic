@@ -13,16 +13,17 @@
 		}
 
 		@include media-breakpoint-up(xl) {
-			padding-top: 7rem;
-			padding-bottom: 7rem;
+			padding-top: 7rem !important;
+			padding-bottom: 7rem !important;
 		}
 	}
 
 	&__blocks {
-		padding: 2rem 15px;
+		padding: 4rem 15px;
 
 		@include media-breakpoint-up(md) {
-			padding-left: 5rem;
+			padding-left: 3rem;
+			overflow: hidden;
 		}
 		
 		@include media-breakpoint-up(xl) {
@@ -38,7 +39,8 @@
 		.row {
 			@include media-breakpoint-down(lg) {
 				flex-flow: nowrap;
-
+				margin-left: 0;
+				margin-right: 0;
 
 				&.swiper-wrapper {
 					height: auto;
@@ -47,22 +49,57 @@
 				.swiper {
 					&-slide {
 						height: auto;
-						width: 23rem;
+						width: 26rem;
 						max-width: unset;
 						flex: none;
 
-						@include media-breakpoint-only(md) {
-							min-width: 260px;
+						&:first-child {
+							padding-left: 0;
+						}
+
+						&:last-child {
+							padding-right: 0;
 						}
 					}
 				}
+			}
+
+			@include media-breakpoint-down(md) {
+				.swiper-slide {
+					width: 23rem;
+				}
+			}
+
+			@include media-breakpoint-up(xl) {
+				&.swiper-wrapper {
+					width: auto;
+					height: auto;
+
+					.swiper-slide {
+						height: auto;
+					}
+				}
+			}
+		}
+
+		.slider__buttons {
+			@include media-breakpoint-between(md, xl) {
+				position: relative;
+				left: 0;
+				top: 0;
+				transform: translate3d(0rem, 4rem, 0);
+				width: 100%;
+			}
+
+			@include media-breakpoint-up(xl) {
+				display: none;
 			}
 		}
 	}
 
 	&__text {
 		position: relative;
-		z-index: 1;
+		z-index: 9;
 
 		@include media-breakpoint-up(lg) {
 			padding-right: 4rem;
@@ -88,6 +125,18 @@
 
 		h2, li, a, p {
 			color: white;
+		}
+
+		img {
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate3d(2.5rem, 6rem, 0);
+			width: 9rem;
+
+			@include media-breakpoint-down(lg) {
+				display: none;
+			}
 		}
 	}
 

@@ -13,7 +13,9 @@
 			</a>
 
 			<div class="nav__search">
-				<form class="form form--search" action="/search">
+				<form class="form form--search" action="/search" method="get" role="search">
+					<input type="hidden" name="type" value="product"/>
+					<input type="hidden" name="options[unavailable_products]" value="hide"/>
 					<input type="text" placeholder="Zoek naar een product" name="q" value="{{ search.terms | escape }}"/>
 					<button type="submit"><i class="icon-search"></i></button>
 				</form>
@@ -42,9 +44,11 @@
 					</li>
 					<li>
 						<a href="/cart" aria-label="Navigeer naar de winkelmandpagina" class="cart">
-							<i class="icon-cart"></i>
-							<span id="cart-total">{{ cart.item_count }} </span>
-							€ <span id="cart-price">{{ cart.original_total_price | money | remove: '€' }}</span>
+							<span class="cart-icon-total">
+								<i class="icon-cart"></i>
+								<span id="cart-total">{{ cart.item_count }}</span>
+							</span>
+							<span id="cart-price">€ {{ cart.original_total_price | money | remove: '€' }}</span>
 						</a>
 					</li>
 					<li class="lg-up">

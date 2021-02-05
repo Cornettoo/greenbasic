@@ -1,17 +1,25 @@
 .section {
 	&__heading {
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
+
+		@include media-breakpoint-up(md) {
+			margin-bottom: 3rem;
+		}
 
 		@include media-breakpoint-up(lg) {
 			margin-bottom: 4rem;
 		}
 
-		&:not(.center) {
-			@include flex-cb;
-		}
-
 		h1, h2 {
 			margin-bottom: 0;
+		}
+	}
+
+	&__footer {
+		margin-top: 2rem;
+
+		@include media-breakpoint-up(sm) {
+			margin-top: 3rem;
 		}
 	}
 }

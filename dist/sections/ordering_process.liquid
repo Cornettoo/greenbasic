@@ -37,29 +37,37 @@
 {% endschema %}
 
 <section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
-	<div class="container">
+	<div class="container container--steps">
 		<div class="steps">
 			<h2>{{ settings.steps_title }}</h2>
 
-			<div class="steps__wrapper">
+			<div class="steps__wrapper flex flex-b">
 				<div class="steps__wrapper__item">
-					<h5>{{ settings.step_1_title }}</h5>
-					<p>{{ settings.step_1_text }}</p>
+					<div class="steps__wrapper__item__content">
+						<h5>{{ settings.step_1_title }}</h5>
+						<p>{{ settings.step_1_text }}</p>
+					</div>
 					<img src="{{ settings.step_1_image | img_url: 'large' }}" alt="{{ settings.step_1_image.alt }}">
 				</div>
 				<div class="steps__wrapper__item">
-					<h5>{{ settings.step_2_title }}</h5>
-					<p>{{ settings.step_2_text }}</p>
+					<div class="steps__wrapper__item__content">
+						<h5>{{ settings.step_2_title }}</h5>
+						<p>{{ settings.step_2_text }}</p>
+					</div>
 					<img src="{{ settings.step_2_image | img_url: 'large' }}" alt="{{ settings.step_2_image.alt }}">
 				</div>
 				<div class="steps__wrapper__item">
-					<h5>{{ settings.step_3_title }}</h5>
-					<p>{{ settings.step_3_text }}</p>
+					<div class="steps__wrapper__item__content">
+						<h5>{{ settings.step_3_title }}</h5>
+						<p>{{ settings.step_3_text }}</p>
+					</div>
 					<img src="{{ settings.step_3_image | img_url: 'large' }}" alt="{{ settings.step_3_image.alt }}">
 				</div>
 				<div class="steps__wrapper__item">
-					<h5>{{ settings.step_4_title }}</h5>
-					<p>{{ settings.step_4_text }}</p>
+					<div class="steps__wrapper__item__content">
+						<h5>{{ settings.step_4_title }}</h5>
+						<p>{{ settings.step_4_text }}</p>
+					</div>
 					<img src="{{ settings.step_4_image | img_url: 'large' }}" alt="{{ settings.step_4_image.alt }}">
 				</div>
 			</div>

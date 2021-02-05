@@ -1,0 +1,56 @@
+.pagination {
+	display: flex;
+
+	li {
+		padding-left: 0;
+		font-weight: 600;
+
+		&:hover a,
+		&.active {
+			color: map-get($colors, 'primary');
+			border-color: map-get($colors, 'primary');
+		}
+
+		&.active {
+			font-weight: 700;
+		}
+
+		&:not(:last-child) {
+			margin-right: 1rem;
+		}
+
+		&::before {
+			content: none;
+		}
+
+		a {
+			color: map-get($colors, 'dark');
+		}
+	}
+
+	li a, 
+	.active {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		height: 3.7rem;
+		min-width: 3.7rem;
+		border: 1px solid map-get($colors, 'dark-grey');
+		border-radius: map-get($general, 'border-radius');
+	}
+
+	.previous,
+	.next {
+		a {
+			font-size: 2.3rem;
+
+			span {
+				transform: translate3d(0, -.2rem, 0);
+			}
+		}
+	}
+
+	.previous {
+		transform: scale3d(-1, 1, 1);
+	}
+}

@@ -13,6 +13,11 @@
 		align-items: center;
 		justify-content: space-between;
 	}
+
+	&-cc {
+		align-items: center;
+		justify-content: center;
+	}
 }
 
 .center {
@@ -43,7 +48,9 @@
 .col {
 	&-pr {
 		&--large {
-			padding-right: 5rem;
+			@include media-breakpoint-up(lg) {
+				padding-right: 5rem;
+			}
 		}
 	}
 }
@@ -54,10 +61,10 @@
 
 .lg {
 	&-up {
-		display: none;
+		display: none !important;
 
 		@include media-breakpoint-up(lg) {
-			display: block;
+			display: block !important;
 		}
 	}
 }
@@ -65,15 +72,15 @@
 .md {
 	&-down {
 		@include media-breakpoint-up(lg) {
-			display: none;
+			display: none !important;
 		}
 	}
 	
 	&-up {
-		display: none;
+		display: none !important;
 	
 		@include media-breakpoint-up(md) {
-			display: block;
+			display: block !important;
 		}
 	}
 }
@@ -81,7 +88,13 @@
 .sm {
 	&-down {
 		@include media-breakpoint-up(md) {
-			display: none;
+			display: none !important;
+		}
+
+		&-mt {
+			@include media-breakpoint-down(sm) {
+				margin-top: 3rem;
+			}
 		}
 	}
 }

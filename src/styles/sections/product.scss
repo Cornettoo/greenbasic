@@ -10,10 +10,14 @@
 
 		.slider-top {
 			display: flex;
-			height: 45rem;
+			height: 26rem;
 			margin-bottom: 2rem;
 			overflow: hidden;
 			position: relative;
+
+			@include media-breakpoint-up(md) {
+				height: 45rem;
+			}
 		}
 		
 		.slider-thumbs {
@@ -29,6 +33,7 @@
 
 				img {
 					width: 80%;
+					object-fit: contain;
 				}
 			}
 		}
@@ -41,6 +46,7 @@
 			img {
 				width: 65%;
 				max-height: 100%;
+				object-fit: contain;
 
 				&.fullscreen {
 					object-fit: cover;

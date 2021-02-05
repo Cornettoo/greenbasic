@@ -60,7 +60,7 @@ input[type="checkbox"] {
 
 		input {
 			width: 100%;
-			border: 1px solid white;
+			border: 1px solid map-get($colors, 'dark');
 			background-color: transparent;
 		}
 
@@ -101,17 +101,34 @@ input[type="checkbox"] {
 	}
 
 	&__row {
-		display: flex;
-		margin-right: -1rem;
-		margin-left: -1rem;
-
 		&:not(:last-child) {
-			margin-bottom: 2rem;
+			margin-bottom: 1rem;
 		}
 
+		@include media-breakpoint-up(md) {
+			display: flex;
+			margin-right: -1rem;
+			margin-left: -1rem;
+		}
+
+		@include media-breakpoint-up(lg) {
+			&:not(:last-child) {
+				margin-bottom: 2rem;
+			}
+		}
+
+
 		.form__field {
-			flex: 1;
-			padding: 0 1rem;
+			@include media-breakpoint-up(md) {
+				flex: 1;
+				padding: 0 1rem;
+			}
+
+			@include media-breakpoint-down(sm) {
+				&:not(:last-child) {
+					margin-bottom: 1rem;
+				}
+			}
 
 			&__select {
 				position: relative;

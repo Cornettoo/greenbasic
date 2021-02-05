@@ -1,6 +1,10 @@
 .footer {
-	padding: 5rem 0;
+	padding: 4rem 0 2.5rem;
 	background-color: map-get($colors, 'light');
+	
+	@include media-breakpoint-up(md) {
+		padding: 5rem 0;
+	}
 
 	&__usp {
 		justify-content: space-between;
@@ -9,12 +13,32 @@
 		&__item {
 			display: flex;
 			align-items: flex-start;
-			width: 27%;
+			width: 100%;
+			padding: 0 15px;
+			
+			&:not(:last-child) {
+				margin-bottom: 2rem;
+			}
+			
+			@include media-breakpoint-up(md) {
+				width: 30%;
+				margin-bottom: 0;
+				padding: 0;
+			}
+
+			@include media-breakpoint-up(lg) {
+				width: 27%;
+			}
 
 			img {
-				width: 4.5rem;
-				max-height: 10.5rem;
+				width: 3.6rem;
+				max-height: 8.6rem;
 				object-fit: contain;
+
+				@include media-breakpoint-up(lg) {
+					width: 4.5rem;
+					max-height: 10.5rem;
+				}
 			}
 
 			div {
@@ -39,7 +63,11 @@
 
 	&__menus {
 		position: relative;
-		padding: 4.5rem 0;
+		padding: 2rem 0 1rem;
+		
+		@include media-breakpoint-up(md) {
+			padding: 4.5rem 0;
+		}
 
 		hr {
 			position: absolute;
@@ -49,9 +77,14 @@
 			border: none;
 			height: 1px;
 			background-color: darken(map-get($colors, 'light'), 7%);
+
 			
 			&.top {
 				top: 0;
+				
+				@include media-breakpoint-down(sm) {
+					display: none;
+				}
 			}
 
 			&.bottom {
@@ -60,7 +93,23 @@
 		}
 
 		h5 {
-			margin-bottom: 2rem;
+			margin-bottom: 1rem;
+
+			@include media-breakpoint-up(md) {
+				margin-bottom: 2rem;
+			}
+		}
+
+		.col {
+			@include media-breakpoint-down(sm) {
+				width: 100%;
+				flex: none;
+				text-align: center;
+
+				&:not(:last-child) {
+					margin-bottom: 3rem;
+				}
+			}
 		}
 	}
 
@@ -70,6 +119,10 @@
 		.col {
 			display: flex;
 			align-items: center;
+
+			@include media-breakpoint-down(sm) {
+				justify-content: center;
+			}
 		}
 
 		img {
@@ -80,6 +133,21 @@
 			&:not(:last-child) {
 				margin-right: 2rem;
 			}
+		}
+	}
+
+	.block--featured {
+		padding: 2rem;
+		border-radius: 0;
+	}
+
+	@include media-breakpoint-down(sm) {
+		.container {
+			padding: 0;
+		}
+
+		.row {
+			margin: 0;
 		}
 	}
 }

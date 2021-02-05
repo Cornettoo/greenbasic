@@ -7,12 +7,12 @@
 <section class="section p-t--medium p-b--large">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-7 text">
+			<div class="col-lg-7 text">
 				<h1 class="h2">{{ article.title }}</h1>
 				{{ article.content }}
 			</div>
-			<div class="col-md-4 offset-md-1">
-				<aside class="sidebar sidebar--blog sidebar--img-right dark">
+			<div class="col-lg-4 offset-lg-1">
+				<aside class="sidebar sidebar--blog sidebar--img-right block--dark">
 					<img src="{{ settings.sidebar_blog_image | img_url: 'medium' }}" alt="{{ settings.sidebar_blog_title.alt }}" class="sidebar__image">
 					<h4>{{ settings.sidebar_blog_title }}</h4>
 					<p>{{ settings.sidebar_blog_text }}</p>

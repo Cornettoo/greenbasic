@@ -15,15 +15,26 @@ export function slider() {
 
 	sliderBlocks.forEach(slider => {
 		let prevButton = slider.getElementsByClassName('slider__buttons__item--prev')[0],
-			nextButton = slider.getElementsByClassName('slider__buttons__item--next')[0];
+			nextButton = slider.getElementsByClassName('slider__buttons__item--next')[0],
+			allowTouchMoveDesktop = true;
+			
+		if (slider.classList.contains('slider--blocks--mobile')) {
+			allowTouchMoveDesktop = false;
+		}
 
-		new Swiper(slider, {
+		let sliderInstance = new Swiper(slider, {
 			slidesPerView: 'auto',
-			loop: true,
+			allowTouchMove: true,
 
 			navigation: {
 				nextEl: nextButton,
 				prevEl: prevButton
+			},
+
+			breakpoints: {
+				992: {
+					allowTouchMove: allowTouchMoveDesktop
+				}
 			}
 		});
 	});
@@ -74,22 +85,35 @@ export function slider() {
 
 
 	// Slider featured collection
-	let sliderFeaturedColl = document.querySelectorAll('.featured-cat__blocks');
+	let sliderFeaturedColl = document.querySelectorAll('.featured-cat__blocks'),
+		mySwiper = undefined;
 
-	sliderFeaturedColl.forEach(slider => {
-		let prevButton = slider.getElementsByClassName('slider__buttons__item--prev')[0],
-			nextButton = slider.getElementsByClassName('slider__buttons__item--next')[0];
+	function initSwiper() {
+		let screenWidth = window.innerWidth;
+		if (screenWidth < 1200 && mySwiper == undefined) {
+			sliderFeaturedColl.forEach(slider => {
+				let prevButton = slider.getElementsByClassName('slider__buttons__item--prev')[0],
+					nextButton = slider.getElementsByClassName('slider__buttons__item--next')[0];
 
-		new Swiper(slider, {
-			slidesPerView: 'auto',
-			loop: true,
+				mySwiper = new Swiper(slider, {
+					slidesPerView: 'auto',
+					loop: false,
 
-			// navigation: {
-			// 	nextEl: nextButton,
-			// 	prevEl: prevButton
-			// }
-		});
+					navigation: {
+						nextEl: nextButton,
+						prevEl: prevButton
+					}
+				});
+			});
+		} else if (screenWidth > 1199 && mySwiper != undefined) {
+			mySwiper.destroy();
+			mySwiper = undefined;
+		}
+	}
+
+	initSwiper();
+
+	window.addEventListener('resize', () => {
+		initSwiper();
 	});
-
-
 }

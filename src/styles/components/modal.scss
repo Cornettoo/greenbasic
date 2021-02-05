@@ -1,0 +1,86 @@
+.modal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	backdrop-filter: blur(6px);
+	background-color: rgba(0, 0, 0, .5);
+	opacity: 0;
+	pointer-events: none;
+	@include transition(all, 0.15s);
+
+	&.active {
+		opacity: 1;
+		pointer-events: all;
+	}
+	
+	&__inner {
+		width: 100%;
+		max-width: 42rem;
+		overflow: hidden;
+		position: relative;
+		border-radius: map-get($general, 'border-radius');
+		background-color: white;
+	}
+	
+	&__message {
+		width: 100%;
+		padding: 2rem;
+		font-weight: 600;
+		background-color: map-get($colors, 'dark');
+		@include transition(color);
+		
+		&.error,
+		&.succes {
+			transition: none;
+		}
+
+		&.succes {
+			color: map-get($colors, 'primary');
+		}
+
+		&.error {
+			color: map-get($colors, 'secondary');
+		}
+
+		i {
+			font-size: 1.1rem;
+			margin-right: 0.4rem;
+		}
+
+		p {
+			width: 80%;
+			line-height: 1.5;
+		}
+	}
+
+	&__buttons {
+		padding: 2rem;
+
+		&.error {
+			a:last-child {
+				display: none;
+			}
+		}
+
+		a:last-child {
+			margin-left: 1rem;
+		}
+	}
+
+	&__close {
+		position: absolute;
+		right: 1rem;
+		top: 0.6rem;
+		color: white;
+	}
+}
+
+.modal-open {
+
+}

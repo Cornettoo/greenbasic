@@ -1,22 +1,31 @@
-{% paginate search.results by 10 %}
-  <form action="/search" method="get" role="search">
-    <input type="search" name="q" value="{{ search.terms | escape }}">
-    <button type="submit">search</button>
-  </form>
+<section class="section p-t--small p-b--small">
+	<div class="container">
+		<div class="section__heading">
+			<h1>Je zocht naar '{{ search.terms | escape }}'</h1>
+		</div>
+		
+		<div class="row">
+			{% paginate search.results by 32 %}
+				{% if search.performed %}
+					{% for item in search.results %}
+						<div class="col-6 col-md-4 col-lg-3">
+							{% include 'block', product: item,
+								class: 'block--product' 
+							%}
+						</div>
+					{% else %}
+						{% include 'search-empty' %}
+					{% endfor %}
+				{% else %}
+						{% include 'search-empty' %}
+				{% endif %}
 
-  {% if search.performed %}
-    {% for item in search.results %}
-      {% if item.featured_image %}
-        <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-          {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
-        </a>
-      {% endif %}
-      <h5>{{ item.title | link_to: item.url }}</h5>
-      <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-    {% else %}
-      no results
-    {% endfor %}
-  {% endif %}
-
-  {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
-{% endpaginate %}
+				{%- if paginate.pages > 1 -%}
+					<div class="col-12 m-t--small">
+						{% include 'pagination' %}
+					</div>
+				{% endif %}
+			{% endpaginate %}
+		</div>
+	</div>
+</section>

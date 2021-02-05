@@ -2,6 +2,16 @@
 	position: relative;
 	overflow: hidden;
 
+	&--blocks {
+		margin-bottom: 0;
+		
+		.swiper-slide {
+			@include media-breakpoint-down(md) {
+				width: 23rem;
+			}
+		}
+	}
+
 	&-list {
 		width: 100%;
 		position: relative;
@@ -39,20 +49,40 @@
 		top: 50%;
 		left: 50%;
 		transform: translate3d(-50%, -50%, 0);
-		width: 57%;
+		width: 97%;
 		z-index: 9;
+
+		@include media-breakpoint-up(sm) {
+			width: 100%;
+		}
+
+		@include media-breakpoint-up(lg) {
+			width: 57%;
+		}
 
 		&__item {
 			@include flex-cc;
 			position: absolute;
 			top: 50%;
 			transform: translate3d(0, -50%, 0);
-			width: 4.6rem;
-			height: 4.6rem;
+			width: 4rem;
+			height: 4rem;
 			border-radius: 50%;
 			color: white;
 			cursor: pointer;
+			opacity: 1;
 			background-color: map-get($colors, 'dark');
+			@include transition(opacity);
+
+			@include media-breakpoint-up(md) {
+				width: 4.6rem;
+				height: 4.6rem;
+			}
+
+			&.swiper-button-disabled {
+				opacity: 0;
+				pointer-events: none;
+			}
 
 			&--prev {
 				left: 0;

@@ -1,18 +1,50 @@
 .steps {
-	padding: 5rem 4rem 0 4rem;
-	text-align: center;
+	padding: 2.5rem 0 0 0;
 	border-radius: map-get($general, 'border-radius');
 	background-color: map-get($colors, 'light');
 
+	@include media-breakpoint-up(md) {
+		padding: 3rem 2rem 0 2rem;
+	}
+	
+	@include media-breakpoint-up(lg) {
+		text-align: center;
+		padding: 5rem 4rem 0 4rem;
+	}
+
 	&__wrapper {
 		position: relative;
-		display: flex;
-		justify-content: space-between;
+		overflow-x: auto;
+		padding-top: 2.5rem;
+
+		@include media-breakpoint-up(lg) {
+			overflow-x: inherit;
+			margin-bottom: 3rem;
+		}
 
 		&__item {
-			padding: 0 2rem;
 			position: relative;
-			width: 25%;
+			padding: 1rem 2rem 0 0rem;
+
+			@include media-breakpoint-down(md) {
+				width: 22rem;
+				flex: 0 0 22rem;
+				margin-left: 15px;
+				display: flex;
+				flex-flow: row-reverse;
+				justify-content: flex-end;
+				align-items: flex-start;
+			}
+
+			@include media-breakpoint-only(md) {
+				width: 27rem;
+				flex: 0 0 27rem;
+			}
+
+			@include media-breakpoint-up(lg) {
+				padding: 0 2rem;
+				width: 25%;
+			}
 
 			&::before {
 				@include pseudo-absolute(0, auto, auto, 50%);
@@ -21,6 +53,11 @@
 				height: 1.1rem;
 				border-radius: 50%;
 				background-color: map-get($colors, 'dark');
+				
+				@include media-breakpoint-down(md) {
+					left: 0;
+					transform: translate3d(1.5rem, -2.2rem, 0);
+				}
 			}
 
 			&:not(:last-child) {
@@ -29,6 +66,13 @@
 					height: 1px;
 					width: 100%;
 					background-color: map-get($colors, 'dark');
+					
+					@include media-breakpoint-down(md) {
+						left: 0;
+						width: 107%;
+						width: calc(100% + 15px);
+						transform: translate3d(1.5rem, 0, 0);
+					}
 				}
 			}
 
@@ -40,20 +84,49 @@
 			
 			&:nth-child(3) {
 				img {
-					margin-top: 4rem;
+					margin-top: 2rem;
+
+					@include media-breakpoint-up(lg) {
+						margin-top: 4rem;
+					}
 				}
 			}
 
 			img {
-				max-height: 19rem;
-				margin: 1rem 0 -5rem;
-				max-width: 16rem;
-				transform: translate3d(2.5rem, 0, 0);
+				max-height: 11rem;
+				max-width: 8rem;
+
+				@include media-breakpoint-up(md) {
+					max-height: 14rem;
+					max-width: 12rem;
+					transform: translate3d(1.5rem, 0, 0);
+				}
+
+				@include media-breakpoint-up(lg) {
+					margin: 1rem 0 -5rem;
+				}
+				
+				@include media-breakpoint-up(xl) {
+					max-height: 19rem;
+					max-width: 16rem;
+					transform: translate3d(2.5rem, 0, 0);
+				}
 			}
 		}
 	}
 
 	h2 {
+		@include media-breakpoint-down(md) {
+			padding: 0 15px;
+			margin-bottom: 3rem;
+		}
+
 		margin-bottom: 6rem;
+	}
+}
+
+.container--steps {
+	@include media-breakpoint-down(sm) {
+		padding: 0;
 	}
 }

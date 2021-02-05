@@ -1,7 +1,11 @@
 .block-border {
-	padding: 3rem;
+	padding: 1.7rem;
 	border: 1px solid map-get($colors, 'tertiary');
 	border-radius: map-get($general, 'border-radius');
+
+	@include media-breakpoint-up(md) {
+		padding: 2.7rem;
+	}
 
 	&--height {
 		height: 100%;

@@ -13,13 +13,8 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-email {
-	transform: translate3d(0, 1px, 0);
-	display: inline-block;
-
-	&:before {
-		content: "\e90e";
-	}
+.icon-close:before {
+	content: "\e90f";
 }
 
 .icon-arrow-left:before {
@@ -76,4 +71,13 @@
 
 .icon-user:before {
 	content: "\e90d";
+}
+
+.icon-email {
+	transform: translate3d(0, 1px, 0);
+	display: inline-block;
+
+	&:before {
+		content: "\e90e";
+	}
 }

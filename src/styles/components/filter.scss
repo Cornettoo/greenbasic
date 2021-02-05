@@ -3,6 +3,38 @@
 	border-radius: map-get($general, 'border-radius');
 	background-color: map-get($colors, 'light');
 
+	@include media-breakpoint-down(sm) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 0;
+		z-index: 9999;
+		transform: translate3d(0, -100%, 0);
+		@include transition(transform);
+		padding-top: 8rem;
+		overflow-y: auto;
+		
+		&.active {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	&__close {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 1rem 0;
+		background-color: white;
+		font-weight: 600;
+
+		.nav__hamburger {
+			margin-right: 1rem;
+		}
+	}
+
 	&__item {
 		&:not(:last-child) {
 			margin-bottom: 2rem;
@@ -44,6 +76,14 @@
 					transform: translate(0px, -1px) rotate(90deg);
 				}
 			}
+		}
+	}
+}
+
+.section-filter {
+	aside {
+		@include media-breakpoint-down(sm) {
+			margin-bottom: 2rem;
 		}
 	}
 }

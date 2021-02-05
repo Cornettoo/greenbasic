@@ -1,7 +1,6 @@
 {% schema %}
 	{
 		"name": "Gerelateerde producten",
-		"max_blocks": 4,
 		"settings": [
 			{
 				"type": "radio",
@@ -32,25 +31,6 @@
 				"id": "title",
 				"label": "Titel",
 				"default": "Gerelateerde producten"
-			},
-			{
-				"type": "checkbox",
-				"id": "show_from_collection",
-				"label": "Toon collection",
-				"info": "Laad automatisch 4 producten uit een gerelateerde collection."
-			}
-		],
-		"blocks": [
-			{
-				"type": "products",
-				"name": "Product",
-				"settings": [
-					{
-						"type": "product",
-						"id": "product",
-						"label": "Product"
-					}
-				]
 			}
 		],
 		"presets": [
@@ -62,47 +42,36 @@
 	}
 {% endschema %}
 
-<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
-	<div class="container">
-		<h3>{{ section.settings.title }}</h3>
-		<div class="row blocks">
+{%- assign first = true -%}
+{% for collection in product.collections %}
+	{% if first %}
+		{% unless collection.handle == 'all' %}
+			{%- assign collectionHandle = collection.handle -%}
+			{%- assign first = false -%}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
 
-			{% if section.settings.show_from_collection %}
-				{%- assign first = true -%}
-				{% for collection in product.collections %}
-					{% if first %}
-						{% unless collection.handle == 'all' %}
-							{%- assign collectionHandle = collection.handle -%}
-							{%- assign first = false -%}
+{% if collectionHandle != blank %}
+	{%- assign products = collections[collectionHandle].products | limit: 4 -%}
+
+	<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
+		<div class="container">
+			<h3>{{ section.settings.title }}</h3>
+			<div class="row blocks slider slider--blocks slider--blocks--mobile">
+				<div class="swiper-wrapper">
+					{% for item in products %}
+						{% unless product.id == item.id %}
+							<div class="swiper-slide col-md-4 col-lg-3">
+								{% include 'block', product: item,
+									class: 'block--product' 
+								%}
+							</div>
 						{% endunless %}
-					{% endif %}
-				{% endfor %}
-
-				{% if collectionHandle != blank %}
-					{%- assign products = collections[collectionHandle].products | limit: 4 -%}
-				{% endif %}
-				
-				{% for item in products %}
-					{% unless product.id == item.id %}
-						<div class="col col-md-3">
-							{% include 'block', product: item,
-								class: 'block--product' 
-							%}
-						</div>
-					{% endunless %}
-				{% endfor %}
-			{% else %}
-
-				{% for item in section.blocks %}
-					<div class="col col-md-3">
-						{% include 'block', product: all_products[item.settings.product],
-							class: 'block--product' 
-						%}
-					</div>
-				{% endfor %}
-			
-			{% endif %}
-
+					{% endfor %}
+				</div>
+				{% include 'slider-nav' %}
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+{% endif %}

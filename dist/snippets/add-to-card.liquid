@@ -17,7 +17,9 @@
 		</div>
 	{% endif %}
 
-	<div id="add-to-cart" class="add-to-cart__submit" data-variant-id="{{ product.selected_or_first_available_variant.id  }}">
+	
+
+	<div id="add-to-cart" class="add-to-cart__submit" data-variant-id="{{ product.selected_or_first_available_variant.id  }}" data-inventory="{{ product.variants.first.inventory_quantity }}">
 		<input id="quantity" min="1" name="quantity" type="number" value="1">
 		<button class="button button--primary" name="add" type="submit"><i class="icon-cart"></i>In mijn winkelwagen</button>
 	</div>

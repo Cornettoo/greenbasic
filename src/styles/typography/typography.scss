@@ -17,8 +17,12 @@ select,
 button,
 .button {
 	line-height: 1.8;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	font-family: map-get($fonts, 'primary');
+
+	@include media-breakpoint-up(md) {
+		font-size: 1.5rem;
+	}
 }
 
 h1,
@@ -52,7 +56,7 @@ h6 {
 }
 
 h1 {
-	@include font-size(3.5rem);
+	@include font-size(3rem);
 }
 
 h2, .h2 {

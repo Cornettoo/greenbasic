@@ -75,6 +75,24 @@
 		{% endfor %}
 	</div>
 
+	<div class="block block--featured block--primary sm-down">
+		<h3>{{ settings.block_2_title }}</h3>
+		<div class="block__html">
+			{{ settings.block_2_html }}
+		</div>
+	</div>
+
+	<div class="block block--featured sm-down">
+		<h3>{{ settings.block_3_title }}</h3>
+		<p>{{ settings.block_3_text }}</p>
+		<form class="form form--newsletter">
+			<input placeholder="Type uw e-mail" type="email">
+			<button type="submit">
+				<i class="icon-arrow"></i>
+			</button>
+		</form>
+	</div>
+
 	<div class="row footer__menus">
 		<hr class="top">
 		{% for item in menuItems %}

@@ -33,4 +33,9 @@ import {
 } from './scripts/cart'
 cart();
 
+import {
+	filter
+} from './scripts/filter'
+filter();
+
 import "./styles/bundle.scss";

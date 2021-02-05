@@ -10,9 +10,23 @@
 <section class="section section-filter">
 	<div class="container">
 		<div class="row">
-			<aside class="col col-md-3">
+			<aside class="col-12 col-md-4 col-lg-3">
+				<button class="button button--dark button-filter sm-down toggle-filter"> 
+					<div class="button-filter__icon"> 
+						<span></span>
+						<span></span>
+						<span></span>
+					</div> 
+					Filter
+				</button>
+				
 				<div class="filter">
-					
+					<div class="filter__close sm-down center flex flex-cc toggle-filter">
+						<div class="nav__hamburger nav__hamburger--close">
+							<span></span>
+						</div>
+						Sluiten
+					</div>
 					<div class="filter__item">
 						<p class="filter__title">Materiaal</p>
 						<ul>
@@ -63,23 +77,18 @@
 				</div>
 			</aside>
 			
-			<div class="col col-md-9">
+			<div class="col-12 col-md-8 col-lg-9">
 				<div class="row blocks">
 					{% paginate collection.products by 15 %}
-			
 						{% for product in collection.products %}
-			
-			
-							<div class="col-md-6 col-lg-4">
+							<div class="col-6 col-lg-4">
 								{% include 'block', product: product,
 									class: 'block--product' 
 								%}
 							</div>
-			
 						{% else %}
 							<p>no matches</p>
 						{% endfor %}
-			
 			
 						{% if paginate.pages > 1 %}
 							{{ paginate | default_pagination }}
