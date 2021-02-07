@@ -1,84 +1,37 @@
 const axios = require('../../config/node_modules/axios').default;
 
-import {
-	formatMoneye
-} from './functions/format_money';
-
-import {
-	modal
-} from './modal'
-
 export function cart() {
-	let addToCartWrapper = document.getElementById('add-to-cart');
+	let cart = document.getElementById('cart');
 
-	if (addToCartWrapper) {
-		let button = addToCartWrapper.querySelector('button'),
-			quantity = addToCartWrapper.querySelector('input'),
-			inventory = addToCartWrapper.dataset.inventory,
-			variantId = parseInt(addToCartWrapper.dataset.variantId),
-			cartTotal = document.getElementById('cart-total'),
-			cartPrice = document.getElementById('cart-price'),
-			productWidth = document.getElementById('product_width'),
-			productLength = document.getElementById('product_length'),
-			succesText = 'Het product is toegevoegd aan je winkelwagen';
+	if (!cart) return;
 
-		button.addEventListener('click', () => {
+	let cartInputs = cart.querySelectorAll('input');
+
+	cartInputs.forEach(input => {
+
+		input.addEventListener('change', () => {
+			console.log(input.id);
+
 			axios({
 					method: 'post',
-					url: '/cart/add.js',
+					url: '/cart/change.js',
 					data: {
-						items: [{
-							'id': variantId,
-							'quantity': quantity.value,
-							'properties': {
-								'width': 600,
-								'length': 2000
-							}
-						}]
+						id: input.id,
+						quantity: input.value
 					}
 				})
 				.then(function (response) {
-					modal(true, 'succes', succesText);
-					addToCartSuccesful();
+					let finalLinePrice = response.data.items.find(item => item.id === parseInt(input.id)).final_line_price;
+
+					console.log(finalLinePrice);
+					console.log(input.parentElement.parentElement.querySelectorAll('.price'));
+					console.log(input.parentElement.parentElement);
 				})
 				.catch(function (error) {
-					addToCartError();
+					console.log('Error : ', error);
 				});
+
+
 		});
-
-		function addToCartError() {
-			axios.get('/cart.js')
-				.then(function (response) {
-					let quantityInCart = 0;
-
-					if (response.data.items.find(item => item.id === variantId)) {
-						quantityInCart = response.data.items.find(item => item.id === variantId).quantity
-					}
-
-					if (quantityInCart >= inventory) {
-						let errorAllInCartText = `Alle ${inventory} producten zijn al toegevoegd aan de winkelwagen`;
-						modal(true, 'error', errorAllInCartText);
-					} else {
-						let numberOfProducts = inventory - quantityInCart;
-						let errorMaxLimitText = `Je kunt maximaal ${numberOfProducts} producten toevoegen`;
-						modal(true, 'error', errorMaxLimitText);
-					}
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
-		}
-
-		function addToCartSuccesful() {
-			axios.get('/cart.js')
-				.then(function (response) {
-					// handle success
-					cartTotal.innerText = response.data.item_count;
-					cartPrice.innerText = formatMoneye(response.data.total_price);
-				})
-				.catch(function (error) {
-					console.log('cart-error: ' + error);
-				});
-		}
-	}
+	});
 }

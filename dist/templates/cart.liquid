@@ -1,63 +1,72 @@
-{% if cart.item_count > 0 %}
-   <h1>cart</h1>
-   <form action="/cart" method="post" novalidate>
-      <table>
-         <thead>
-            <th colspan="2">Prod</th>
-            <th>Price</th>
-            <th>Qty</th>
-            <th>total</th>
-         </thead>
-         <tbody>
-            {% for item in cart.items %}
-               <tr>
+<section class="p-t--small p-b--small">
+	<div class="container">
+		<div class="section__heading">
+			<h1>Winkelwagen</h1>
+		</div>	
+		{% if cart.item_count > 0 %}
+			<div id="cart" class="cart text">
+				{% for item in cart.items %}
+					<div class="cart__item">
+						<div class="cart__column">
+							<a href="{{ item.url | within: collections.all }}">
+								<img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+							</a>
+						</div>
+						<div class="cart__column">
+							<h6>
+								<a href="{{ item.url }}">{{ item.product.title }}</a>
+							</h6>
+							{% unless item.variant.title == 'Default Title'  %}
+								<p>{{ item.variant.title }}</p>
+							{% endunless %}
+							<div class="cart__column__row flex flex-w">
+								{% assign property_size = item.properties | size %}
+								{% if property_size > 0 %}
+									{% for p in item.properties %}
+											<span>{{ p.first }}: {{ p.last }}</span>
+									{% endfor %}
+								{% endif %}
+							</div>
+						</div>
+						<div class="cart__column">
+							<p>{{ item.product.metafields.global.shipping }}</p>
+						</div>
+						<div class="cart__column">
+							<div class="cart__column__row flex flex-cb">
+								<div>
+									Aantal &nbsp;&nbsp;<input type="number" name="updates[]" id="{{ item.variant.id }}" value="{{ item.quantity }}" min="1" max="{{ item.product.variants.first.inventory_quantity }}">
+								</div>
+								<div class="price">
+									{% if item.original_line_price != item.line_price %}
+										€ {{ item.original_line_price | money | remove: '€' }}
+									{% endif %}
 
-                  <td>
-                     {% assign property_size = item.properties | size %}
-                     {% if property_size > 0 %}
-                        {% for p in item.properties %}
-                              {{ p.first }}: {{ p.last }}
-                              <br>
-                        {% endfor %}
-                     {% endif %}
+									€ {{ item.line_price | money | remove: '€' }}
 
-                  </td>
-
-                  <td>
-                     <a href="{{ item.url | within: collections.all }}">
-                        <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-                     </a>
-                  </td>
-                  <td>
-                     <a href="{{ item.url }}">{{ item.product.title }}</a>
-                     {{ item.variant.title }}
-                     <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">remove</a>
-                  </td>
-                  <td>{{ item.price | money }}</td>
-                  <td>
-                     <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
-                  </td>
-                  <td>
-                     {% if item.original_line_price != item.line_price %}
-                        {{ item.original_line_price | money }}
-                     {% endif %}
-                     {{ item.line_price | money }}
-                     {% for discount in item.discounts %}
-                        {{ discount.title }}
-                     {% endfor %}
-                  </td>
-               </tr>
-            {% endfor %}
-         </tbody>
-      </table>
-      <div>
-         <p>sub total :
-            {{ cart.total_price | money }}</p>
-         <button name="update" type="submit">Update</button>
-         <button name="checkout" type="submit">Checkout</button>
-      </div>
-   </form>
-{% else %}
-   <h2>cart</h2>
-   Cart is empty
-{% endif %}
+									{% for discount in item.discounts %}
+										{{ discount.title }}
+									{% endfor %}
+								</div>
+							</div>
+							
+							<div class="cart__column__row flex flex-cb">
+								<div>
+									<a href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="icon-trash"></i> Verwijder</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="cart-price flex flex-e">
+				<div class="cart-price__inner flex flex--ce">
+					<p><b><span>Totaal:</span> € {{ cart.total_price | money | remove: '€' }}</b></p>
+					<a href="/checkout" class="button button--primary">Afrekenen <i class="icon-arrow"></i></a>
+				</div>
+			</div>
+		{% else %}
+			<p>Je winkelwagen is leeg.</p>
+			<a href="/collections/all" class="button button--primary">Naar de winkel <i class="icon-arrow"></i></a>
+		{% endif %}
+	</div>
+</section>

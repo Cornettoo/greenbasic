@@ -29,6 +29,11 @@ import {
 account();
 
 import {
+	addToCart
+} from './scripts/add-to-cart'
+addToCart();
+
+import {
 	cart
 } from './scripts/cart'
 cart();
