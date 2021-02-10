@@ -6,7 +6,7 @@
 		{% if cart.item_count > 0 %}
 			<div id="cart" class="cart text">
 				{% for item in cart.items %}
-					<div class="cart__item">
+					<div class="cart__item" data-item-price="{{ item.product.price }}">
 						<div class="cart__column">
 							<a href="{{ item.url | within: collections.all }}">
 								<img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
@@ -51,16 +51,16 @@
 							
 							<div class="cart__column__row flex flex-cb">
 								<div>
-									<a href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="icon-trash"></i> Verwijder</a>
+									<a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__item__remove"><i class="icon-trash"></i> <span>Verwijder</span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
-			<div class="cart-price flex flex-e">
-				<div class="cart-price__inner flex flex--ce">
-					<p><b><span>Totaal:</span> € {{ cart.total_price | money | remove: '€' }}</b></p>
+			<div class="cart-footer flex flex-e">
+				<div class="cart-footer__price flex flex--ce">
+					<p><b><span>Totaal:</span> <span id="total-price">€ {{ cart.total_price | money | remove: '€' }}</span></b></p>
 					<a href="/checkout" class="button button--primary">Afrekenen <i class="icon-arrow"></i></a>
 				</div>
 			</div>

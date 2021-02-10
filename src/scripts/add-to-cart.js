@@ -1,7 +1,7 @@
 const axios = require('../../config/node_modules/axios').default;
 
 import {
-	formatMoneye
+	formatMoney
 } from './functions/format_money';
 
 import {
@@ -72,10 +72,8 @@ export function addToCart() {
 		function addToCartSuccesful() {
 			axios.get('/cart.js')
 				.then(function (response) {
-					// handle success
 					cartTotal.innerText = response.data.item_count;
-					cartPrice.innerText = formatMoneye(response.data.total_price);
-					console.log(response.data);
+					cartPrice.innerText = formatMoney(response.data.total_price);
 				})
 				.catch(function (error) {
 					console.log('cart-error: ' + error);

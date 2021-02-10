@@ -1,4 +1,4 @@
-export function formatMoneye(amount) {
+export function formatMoney(amount) {
 	var Shopify = Shopify || {};
 	Shopify.money_format = "{{amount}}";
 	Shopify.formatMoney = function (cents, format) {
@@ -15,8 +15,8 @@ export function formatMoneye(amount) {
 
 		function formatWithDelimiters(number, precision, thousands, decimal) {
 			precision = defaultOption(precision, 2);
-			thousands = defaultOption(thousands, ',');
-			decimal = defaultOption(decimal, '.');
+			thousands = defaultOption(thousands, '.');
+			decimal = defaultOption(decimal, ',');
 
 			if (isNaN(number) || number == null) {
 				return 0;
@@ -30,7 +30,7 @@ export function formatMoneye(amount) {
 
 			return dollars + cents;
 		}
-
+		
 		switch (formatString.match(placeholderRegex)[1]) {
 			case 'amount':
 				value = formatWithDelimiters(cents, 2);

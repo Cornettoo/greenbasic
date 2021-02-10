@@ -1,17 +1,22 @@
 const axios = require('../../config/node_modules/axios').default;
 
+import {
+	formatMoney
+} from './functions/format_money';
+
 export function cart() {
-	let cart = document.getElementById('cart');
+	let cart = document.getElementById('cart'),
+		totalPrice = document.getElementById('total-price');
 
 	if (!cart) return;
 
-	let cartInputs = cart.querySelectorAll('input');
+	let cartItems = cart.querySelectorAll('.cart__item');
 
-	cartInputs.forEach(input => {
+	cartItems.forEach(item => {
+		let input = item.querySelector('input'),
+			priceEl = item.querySelector('.price');
 
 		input.addEventListener('change', () => {
-			console.log(input.id);
-
 			axios({
 					method: 'post',
 					url: '/cart/change.js',
@@ -22,16 +27,15 @@ export function cart() {
 				})
 				.then(function (response) {
 					let finalLinePrice = response.data.items.find(item => item.id === parseInt(input.id)).final_line_price;
-
-					console.log(finalLinePrice);
-					console.log(input.parentElement.parentElement.querySelectorAll('.price'));
-					console.log(input.parentElement.parentElement);
+					
+					priceEl.innerText = '€ ' + formatMoney(finalLinePrice);
+					totalPrice.innerText = '€ ' + formatMoney(response.data.total_price);
 				})
 				.catch(function (error) {
-					console.log('Error : ', error);
+					// console.log('Error : ', error);
 				});
-
-
 		});
+
 	});
+
 }
