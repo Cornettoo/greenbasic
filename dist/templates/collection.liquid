@@ -10,76 +10,16 @@
 <section class="section section-filter">
 	<div class="container">
 		<div class="row">
+			<div class="col-12">
+				<div id="usf_container"></div>
+			</div>
 			<aside class="col-12 col-md-4 col-lg-3">
-				<button class="button button--dark button-filter sm-down toggle-filter"> 
-					<div class="button-filter__icon"> 
-						<span></span>
-						<span></span>
-						<span></span>
-					</div> 
-					Filter
-				</button>
-				
-				<div class="filter">
-					<div class="filter__close sm-down center flex flex-cc toggle-filter">
-						<div class="nav__hamburger nav__hamburger--close">
-							<span></span>
-						</div>
-						Sluiten
-					</div>
-					<div class="filter__item">
-						<p class="filter__title">Materiaal</p>
-						<ul>
-							<li>
-								<input type="checkbox" id="hout" name="hout">
-								<label for="hout">Hout</label>
-							</li>
-							<li>
-								<input type="checkbox" id="plexiglas" name="plexiglas">
-								<label for="plexiglas">Plexiglas</label>
-							</li>
-						</ul>
-					</div>
-
-					<div class="filter__item">
-						<p class="filter__title">Materiaalsoort</p>
-						<ul>
-							<li>
-								<input type="checkbox" id="berken" name="berken">
-								<label for="berken">Berken</label>
-							</li>
-							<li>
-								<input type="checkbox" id="populieren" name="populieren">
-								<label for="populieren">Populieren</label>
-							</li>
-							<li>
-								<input type="checkbox" id="berken1" name="berken1">
-								<label for="berken1">Berken</label>
-							</li>
-							<li>
-								<input type="checkbox" id="hardboard" name="hardboard">
-								<label for="hardboard">Hardboard</label>
-							</li>
-							<li data-option-visibility="false">
-								<input type="checkbox" id="berken3" name="berken3">
-								<label for="berken3">Berken</label>
-							</li>
-							<li data-option-visibility="false">
-								<input type="checkbox" id="hardboard1" name="hardboard1">
-								<label for="hardboard1">Hardboard</label>
-							</li>
-							<li>
-								<button data-option-toggle>Meer <i class="icon-arrow"></i></button>
-							</li>
-						</ul>
-					</div>
-					
-				</div>
+				{% include 'filter' %}
 			</aside>
 			
 			<div class="col-12 col-md-8 col-lg-9">
 				<div class="row blocks">
-					{% paginate collection.products by 15 %}
+					{% paginate collection.products by 30 %}
 						{% for product in collection.products %}
 							<div class="col-6 col-lg-4">
 								{% include 'block', product: product,

@@ -1,0 +1,93 @@
+{% assign colors = '' %}
+{% assign materials = '' %}
+{%- assign indexEl = 1354 -%}
+
+{% for product in collection.products %}
+	{% if product.metafields['filter'].Kleur != blank %}
+		{% assign colors = colors | append: product.metafields['filter'].Kleur | append: ', ' %}
+	{% endif %}
+	{% if product.metafields['filter'].Materiaal != blank %}
+		{% assign materials = materials | append: product.metafields['filter'].Materiaal | append: ', ' %}
+	{% endif %}
+{% endfor %}
+
+{%- assign colorsArray = colors | split: ',' -%}
+{%- assign materialsArray = materials | split: ',' -%}
+
+<button class="button button--dark button-filter sm-down toggle-filter"> 
+	<div class="button-filter__icon"> 
+		<span></span>
+		<span></span>
+		<span></span>
+	</div> 
+	Filter
+</button>
+
+<div class="filter">
+	<div class="filter__close sm-down center flex flex-cc toggle-filter">
+		<div class="nav__hamburger nav__hamburger--close">
+			<span></span>
+		</div>
+		Sluiten
+	</div>
+
+	{% if colorsArray != blank %}
+		<div class="filter__item">
+			<p class="filter__title">Kleuren</p>
+			<ul>
+				{% for item in colorsArray %}
+					{% if item != blank %}
+						{%- assign indexEl = indexEl | plus: 1 -%}
+						<li>
+							<input type="checkbox" id="{{ item | downcase }}-{{ indexEl }}" name="{{ item }}">
+							<label for="{{ item | downcase }}-{{ indexEl }}">{{ item }}</label>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
+	{% if materialsArray != blank %}
+		<div class="filter__item">
+			<p class="filter__title">Materiaal</p>
+			<ul>
+				{% for item in materialsArray %}
+					{% if item != blank %}
+						{%- assign indexEl = indexEl | plus: 1 -%}
+						<li>
+							<input type="checkbox" id="{{ item | downcase }}-{{ indexEl }}" name="{{ item }}">
+							<label for="{{ item | downcase }}-{{ indexEl }}">{{ item }}</label>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
+	<!-- <div class="filter__item">
+		<p class="filter__title">Materiaalsoort</p>
+		<ul>
+
+			<li>
+				<input type="checkbox" id="berken" name="berken">
+				<label for="berken">Berken</label>
+			</li>
+			<li data-option-visibility="false">
+				<input type="checkbox" id="berken3" name="berken3">
+				<label for="berken3">Berken</label>
+			</li>
+			<li data-option-visibility="false">
+				<input type="checkbox" id="hardboard1" name="hardboard1">
+				<label for="hardboard1">Hardboard</label>
+			</li>
+			<li>
+				<button data-option-toggle>Meer <i class="icon-arrow"></i></button>
+			</li>
+		</ul>
+	</div> -->
+	
+</div>
+
+<b>Data:</b>
+{{ data | to_json }}

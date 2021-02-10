@@ -1,0 +1,17 @@
+{% assign colors = '' %}
+{% assign materials = '' %}
+{%- assign indexEl = 1354 -%}
+
+{% for product in collection.products %}
+	{% if product.metafields['filter'].Kleur != blank %}
+		{% assign colors = colors | append: product.metafields['filter'].Kleur | append: ', ' %}
+	{% endif %}
+	{% if product.metafields['filter'].Materiaal != blank %}
+		{% assign materials = materials | append: product.metafields['filter'].Materiaal | append: ', ' %}
+	{% endif %}
+{% endfor %}
+
+{%- assign colorsArray = colors | split: ',' -%}
+{%- assign materialsArray = materials | split: ',' -%}
+
+<p>{{ colorsArray }}</p>
