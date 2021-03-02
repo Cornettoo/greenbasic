@@ -7,6 +7,25 @@
 		"theme_support_url": "https://accepta.eu"
 	},
 	{
+		"name": "SEO",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Meta keywords"
+			},
+			{
+				"type": "text",
+				"id": "home_meta_keywords",
+				"label": "Homepagina"
+			},
+			{
+				"type": "text",
+				"id": "blog_meta_keywords",
+				"label": "Blog overzichtspagina"
+			}
+		]
+	},
+	{
 		"name": "Account",
 		"settings": [
 			{

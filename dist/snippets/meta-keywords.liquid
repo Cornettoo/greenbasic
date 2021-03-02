@@ -1,0 +1,17 @@
+{%- assign keywords = '' -%}
+{% if collection.metafields.global.meta_keywords != blank and template != 'product' %}
+	{%- assign keywords = collection.metafields.global.meta_keywords -%}
+{% elsif page.metafields.global.meta_keywords != blank %}
+	{%- assign keywords = page.metafields.global.meta_keywords -%}
+{% elsif article.metafields.global.meta_keywords != blank %}
+	{%- assign keywords = article.metafields.global.meta_keywords -%}
+{% elsif template == 'product' %}
+	{%- assign keywords = product.metafields.global.meta_keywords -%}
+{% elsif template == 'index' %}
+	{%- assign keywords = settings.home_meta_keywords -%}
+{% elsif blog.title != blank %}
+	{%- assign keywords = settings.blog_meta_keywords -%}
+{% endif %}
+{% if keywords != blank %}
+	<meta name="keywords" content="{{ keywords }}">
+{% endif %}

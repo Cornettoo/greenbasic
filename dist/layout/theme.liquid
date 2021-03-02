@@ -7,6 +7,7 @@
 		<meta name="description" content="{{ page_description | escape }}">
 		<link rel="canonical" href="{{ canonical_url }}">
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		{% include 'meta-keywords' %}
 		{% include 'meta' %}
 		<link rel="stylesheet" href="{{ 'icons.css' | asset_url }}">
 		{% render 'style-bundle', layout: 'theme' %}
@@ -20,22 +21,22 @@
 		{%- include 'body-class' -%}
 	</head>
 	<body class="{{- bodyClass -}}">
+		{% include 'nav' %}
+	
+		{% if template != 'article' and template != 'page.team' and template != 'page.about-us' %}
+			{% include 'breadcrumbs' %}
+		{% endif %}
 
-	{% include 'nav' %}
-	{% if template != 'article' and template != 'page.team' and template != 'page.about-us' %}
-		{% include 'breadcrumbs' %}
-	{% endif %}
+		<main role="main">
+			{{ content_for_layout }}
+		</main>
 
-	<main role="main">
-		{{ content_for_layout }}
-	</main>
+		{% section 'footer' %}
 
-	{% section 'footer' %}
+		{% render 'script-bundle', layout: 'theme' %}
 
-	{% render 'script-bundle', layout: 'theme' %}
-
-	{% if template == 'page.contact' %}
-		<script src="https://www.google.com/recaptcha/api.js?render=6LcpgSoaAAAAANgxrxQLkVCUXOyFVdey50Z9KExl"></script>
-	{% endif %}
+		{% if template == 'page.contact' %}
+			<script src="https://www.google.com/recaptcha/api.js?render=6LcpgSoaAAAAANgxrxQLkVCUXOyFVdey50Z9KExl"></script>
+		{% endif %}
 	</body>
 </html>
