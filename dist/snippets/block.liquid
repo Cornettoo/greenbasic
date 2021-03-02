@@ -1,12 +1,12 @@
+{%- assign customCollection = settings.collection_custom -%}
+{%- assign ifInCollection = product.collections | where: 'handle', customCollection -%}
 <a class="block {{ class }}" href="{{ product.url | within: collection }}" aria-label="Navigeer naar {{ product.title }}">
 	<picture>
-		{% if product.tags contains 'Op maat te bestellen' %}
+		{% if ifInCollection != blank %}
 			<span class="label">Op maat te bestellen</span>
 		{% endif %}
-		
 		<img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
 	</picture>
 	<h3>{{ product.title }}</h3>
-
 	{% include 'price' %}
 </a>

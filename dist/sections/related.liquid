@@ -42,32 +42,23 @@
 	}
 {% endschema %}
 
-{%- assign first = true -%}
-{% for collection in product.collections %}
-	{% if first %}
-		{% unless collection.handle == 'all' %}
-			{%- assign collectionHandle = collection.handle -%}
-			{%- assign first = false -%}
-		{% endunless %}
-	{% endif %}
-{% endfor %}
+{%- assign relatedHandles = product.metafields.product.related | split: ', ' -%}
 
-{% if collectionHandle != blank %}
-	{%- assign products = collections[collectionHandle].products | limit: 4 -%}
-
+{% if relatedHandles != blank %}
 	<section class="section p-t--{{ section.settings.space_top }} p-b--{{ section.settings.space_bottom }}">
 		<div class="container">
 			<h3>{{ section.settings.title }}</h3>
 			<div class="row blocks slider slider--blocks slider--blocks--mobile">
 				<div class="swiper-wrapper">
-					{% for item in products %}
-						{% unless product.id == item.id %}
+					{% for handle in relatedHandles %}
+						{%- assign item = all_products[handle] -%}
+						{% if item != blank %}
 							<div class="swiper-slide col-md-4 col-lg-3">
 								{% include 'block', product: item,
-									class: 'block--product' 
+								class: 'block--product' 
 								%}
 							</div>
-						{% endunless %}
+						{% endif %}
 					{% endfor %}
 				</div>
 				{% include 'slider-nav' %}

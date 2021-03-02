@@ -333,5 +333,19 @@
 				"label": "Tekst"
 			}
 		]
+	},
+	{
+		"name": "Overig",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Categorie opmaat bestellen"
+			},
+			{
+				"type": "collection",
+				"id": "collection_custom",
+				"label": "Categorie"
+			}
+		]
 	}
 ]

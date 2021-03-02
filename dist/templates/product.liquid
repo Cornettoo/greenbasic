@@ -1,9 +1,14 @@
 {%- assign content = product.description | split: '<p>-split-</p>' -%}
+{%- assign customCollection = settings.collection_custom -%}
+{%- assign ifInCollection = product.collections | where: 'handle', customCollection -%}
+{%- assign currentVariant = product.selected_or_first_available_variant -%}
 
 <section class="section text p-t--small p-b--small">
    <div class="container">
 		<h1 class="h2">{{ product.title }}</h1>
-		{% include 'tags' %}
+		{% if ifInCollection != blank %}
+			{% include 'tags', customHandle: customCollection %}
+		{% endif %}
    </div>
 </section>
 
@@ -11,26 +16,40 @@
    <div class="container">
       <div class="row">
          <div class="col col-md-6 product__slider">
+				<h2>Video: {{ product.videos | to_json }}</h2>
 				<div class="swiper-container slider-top">
 					<div class="swiper-wrapper">
-						{% for image in product.images %}
-							{%- assign imageAlt = image.alt | split: '|' -%}
-							{%- assign imageAltTextLast = imageAlt[1] | downcase | remove: ' ' -%}
-							<div class="swiper-slide">
-								<img src="{{ image.src | img_url: '600x600', scale: 2 }}" alt="{{ imageAlt[0] | escape }}"  {% if imageAltTextLast == 'fullscreen' %}class="fullscreen"{% endif %}>
-							</div>
+						{% for media in product.media %}
+							{% if media.media_type == 'video' %}
+								<div class="swiper-slide">
+									<button></button>
+									{{ media | video_tag: image_size: "1024x", autoplay: false }}
+								</div>
+							{% else %}
+								{%- assign imageAlt = media.alt | split: '|' -%}
+								{%- assign imageAltTextLast = imageAlt[1] | downcase | remove: ' ' -%}
+								<div class="swiper-slide">
+									<img src="{{ media.src | img_url: '600x600', scale: 2 }}" alt="{{ imageAlt[0] | escape }}"  {% if imageAltTextLast == 'fullscreen' %}class="fullscreen"{% endif %}>
+								</div>
+							{% endif %}	
 						{% endfor %}	
 					</div>
 				</div>
 				
             <div class="swiper-container slider-thumbs">
                <div class="swiper-wrapper">
-						{% for image in product.images %}
-							{%- assign imageAlt = image.alt | split: '|' -%}
-							{%- assign imageAltTextLast = imageAlt[1] | downcase | remove: ' ' -%}
-							<div class="swiper-slide">
-								<img src="{{ image.src | img_url: 'compact' }}" alt="{{ imageAlt[0] | escape }}" {% if imageAltTextLast == 'fullscreen' %}class="fullscreen"{% endif %}>
-							</div>
+						{% for media in product.media %}
+							{% if media.media_type == 'video' %}
+								<div class="swiper-slide">
+									{{ media | video_tag }}
+								</div>
+							{% else %}
+								{%- assign imageAlt = media.alt | split: '|' -%}
+								{%- assign imageAltTextLast = imageAlt[1] | downcase | remove: ' ' -%}
+								<div class="swiper-slide">
+									<img src="{{ media.src | img_url: 'compact' }}" alt="{{ imageAlt[0] | escape }}" {% if imageAltTextLast == 'fullscreen' %}class="fullscreen"{% endif %}>
+								</div>
+							{% endif %}
 						{% endfor %}
                </div>
             </div>
@@ -39,6 +58,9 @@
          <div class="col col-md-6 col-pr-pl product-buy-block">
 				{% include 'price', class: 'price--large' %}
 				{% include 'stock' %}
+				{% if currentVariant.sku != blank %}
+					<span>Artikelnummer: {{ currentVariant.sku }}</span>
+				{% endif %}
 
 				{% if product.available %}
 					<p>{{ product.metafields.global.shipping }}</p>

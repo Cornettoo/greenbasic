@@ -1,5 +1,5 @@
 <div class="add-to-cart">
-	{% if product.tags contains 'Op maat te bestellen' %}
+	{% if ifInCollection != blank %}
 		<div class="input">
 			<label for="breedte">
 				<span>Breedte in mm</span>

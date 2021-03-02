@@ -1,7 +1,13 @@
 <div class="tags">
-	{% for tag in product.tags %}
-		<a href="/collections/all/{{ tag | handleize }}" class="label">
-			{{ tag }}
+	{% if customHandle != blank %}
+		<a href="{{ collections[customHandle].url }}" class="label">
+			{{ collections[customHandle].title }}
 		</a>
-	{% endfor %}
+	{% else %}
+		{% for tag in product.tags %}
+			<a href="/collections/all/{{ tag | handleize }}" class="label">
+				{{ tag }}
+			</a>
+		{% endfor %}
+	{% endif %}
 </div>
