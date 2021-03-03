@@ -9,21 +9,21 @@ export function filter() {
 		button.addEventListener('click', () => {
 			filter.classList.toggle('active');
 		});
-	});	
+	});
 
 	inputs.forEach(input => {
 		input.addEventListener('change', () => {
 			console.log('click henk yesswefwef nee welll');
-axios({
-	type: 'post',
-	url: '/product?view=filter'
-})
-.then(function (response) {
-	console.log('Response ', response);
-})
-.catch(function (error) {
-	console.log('Error ', error);
-});
+			axios({
+					type: 'post',
+					url: '/product?view=filter'
+				})
+				.then(function (response) {
+					console.log('Response ', response);
+				})
+				.catch(function (error) {
+					console.log('Error ', error);
+				});
 		});
 	});
 }

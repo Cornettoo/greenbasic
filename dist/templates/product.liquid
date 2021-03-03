@@ -16,14 +16,13 @@
    <div class="container">
       <div class="row">
          <div class="col col-md-6 product__slider">
-				<h2>Video: {{ product.videos | to_json }}</h2>
 				<div class="swiper-container slider-top">
 					<div class="swiper-wrapper">
 						{% for media in product.media %}
 							{% if media.media_type == 'video' %}
 								<div class="swiper-slide">
-									<button></button>
-									{{ media | video_tag: image_size: "1024x", autoplay: false }}
+									<button class="button--play" data-modal-video="{{ media.id }}"><span></span></button>
+									<img src="{{ media.preview_image | img_url: '600x600', scale: 2 }}" alt="{{ imageAlt[0] | escape }}" class="fullscreen">
 								</div>
 							{% else %}
 								{%- assign imageAlt = media.alt | split: '|' -%}
@@ -40,8 +39,10 @@
                <div class="swiper-wrapper">
 						{% for media in product.media %}
 							{% if media.media_type == 'video' %}
+								{%- assign video = true -%}
 								<div class="swiper-slide">
-									{{ media | video_tag }}
+									<button class="button--play" data-modal-video="{{ media.id }}"><span></span></button>
+									<img src="{{ media.preview_image | img_url: 'compact' }}" alt="{{ imageAlt[0] | escape }}" class="fullscreen">
 								</div>
 							{% else %}
 								{%- assign imageAlt = media.alt | split: '|' -%}
@@ -58,12 +59,13 @@
          <div class="col col-md-6 col-pr-pl product-buy-block">
 				{% include 'price', class: 'price--large' %}
 				{% include 'stock' %}
+				{% if product.available %}
+					<p>{{ product.metafields.global.shipping }}</p>
+				{% endif %}
 				{% if currentVariant.sku != blank %}
 					<span>Artikelnummer: {{ currentVariant.sku }}</span>
 				{% endif %}
-
 				{% if product.available %}
-					<p>{{ product.metafields.global.shipping }}</p>
 					{% include 'add-to-card' %}
 				{% endif %}
 
@@ -107,10 +109,9 @@
 {% section "ordering_process" %}
 
 <div class="modal">
-	<div class="modal__inner">
+	<div class="modal__inner modal__inner--add">
+		<button class="modal__close close"><i class="icon-close"></i></button>
 		<div class="modal__message text">
-			<button class="modal__close close"><i class="icon-close"></i></button>
-
 			<div class="modal__message__inner succes">
 				<p></p>
 			</div>
@@ -120,4 +121,16 @@
 			<a href="/cart" aria-label="Navigeer naar de winkelwagen" class="button button--border">Bestellen</a>
 		</div>
 	</div>
+	{% if video %}
+		<div class="modal__inner modal__inner--video">
+			<button class="modal__close close"><i class="icon-close"></i></button>
+			{% for media in product.media %}
+				{% if media.media_type == 'video' %}
+					{{ media | video_tag:image_size: "1024x", controls: true }}
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
 </div>
+
+

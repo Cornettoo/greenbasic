@@ -38,9 +38,14 @@ import {
 } from './scripts/cart'
 cart();
 
+// import {
+// 	filter
+// } from './scripts/filter'
+// filter();
+
 import {
-	filter
-} from './scripts/filter'
-filter();
+	video
+} from './scripts/video'
+video();
 
 import "./styles/bundle.scss";
